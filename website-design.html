@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Design | Stillwell Software Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">S</span>
+                <span class="logo-text">Stillwell<span class="logo-accent">Software Solutions</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#services" class="nav-link">Services</a></li>
+                <li><a href="website-design.html" class="nav-link active">Website Design</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#contact" class="nav-link cta-link">Contact Us</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="hero-grid"></div>
+        <div class="container page-hero-content">
+            <div class="hero-badge">Our Design Portfolio</div>
+            <h1 class="hero-title">Websites That <span class="gradient-text">Win Customers</span></h1>
+            <p class="hero-subtitle">From sleek landing pages to full-featured platforms, we design and develop websites that look incredible and perform even better.</p>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio-section">
+        <div class="container">
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+                <button class="filter-btn" data-filter="saas">SaaS</button>
+                <button class="filter-btn" data-filter="corporate">Corporate</button>
+                <button class="filter-btn" data-filter="creative">Creative</button>
+            </div>
+
+            <div class="portfolio-grid">
+
+                <!-- E-Commerce Store -->
+                <div class="portfolio-item" data-category="ecommerce">
+                    <div class="portfolio-preview">
+                        <div class="portfolio-mockup mockup-ecommerce">
+                            <div class="mockup-browser">
+                                <div class="mockup-dots"><span></span><span></span><span></span></div>
+                                <div class="mockup-url">www.luxe-market.com</div>
+                            </div>
+                            <div class="mockup-body"></div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <span class="overlay-tag">E-Commerce</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Luxe Market</h3>
+                        <p>A premium e-commerce experience with product filtering, cart management, Stripe checkout, and an admin dashboard for inventory control.</p>
+                        <div class="portfolio-tags">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>Stripe</span>
+                            <span>PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SaaS Dashboard -->
+                <div class="portfolio-item" data-category="saas">
+                    <div class="portfolio-preview">
+                        <div class="portfolio-mockup mockup-saas">
+                            <div class="mockup-browser">
+                                <div class="mockup-dots"><span></span><span></span><span></span></div>
+                                <div class="mockup-url">app.metricshub.io</div>
+                            </div>
+                            <div class="mockup-body"></div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <span class="overlay-tag">SaaS</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>MetricsHub Dashboard</h3>
+                        <p>A real-time analytics platform with interactive charts, team collaboration, automated reporting, and role-based access control.</p>
+                        <div class="portfolio-tags">
+                            <span>Next.js</span>
+                            <span>TypeScript</span>
+                            <span>D3.js</span>
+                            <span>AWS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Restaurant Site -->
+                <div class="portfolio-item" data-category="corporate">
+                    <div class="portfolio-preview">
+                        <div class="portfolio-mockup mockup-restaurant">
+                            <div class="mockup-browser">
+                                <div class="mockup-dots"><span></span><span></span><span></span></div>
+                                <div class="mockup-url">www.aureliarestaurant.com</div>
+                            </div>
+                            <div class="mockup-body"></div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <span class="overlay-tag">Corporate</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Aurelia Restaurant</h3>
+                        <p>An elegant restaurant website with online reservations, a dynamic menu system, photo gallery, and integrated review management.</p>
+                        <div class="portfolio-tags">
+                            <span>HTML/CSS</span>
+                            <span>JavaScript</span>
+                            <span>PHP</span>
+                            <span>MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Real Estate Platform -->
+                <div class="portfolio-item" data-category="corporate">
+                    <div class="portfolio-preview">
+                        <div class="portfolio-mockup mockup-realestate">
+                            <div class="mockup-browser">
+                                <div class="mockup-dots"><span></span><span></span><span></span></div>
+                                <div class="mockup-url">www.primerealty.co</div>
+                            </div>
+                            <div class="mockup-body"></div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <span class="overlay-tag">Corporate</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Prime Realty</h3>
+                        <p>A property listing platform with advanced search filters, map integration, virtual tours, and agent management portal.</p>
+                        <div class="portfolio-tags">
+                            <span>React</span>
+                            <span>Mapbox</span>
+                            <span>Express</span>
+                            <span>MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fitness App Landing -->
+                <div class="portfolio-item" data-category="creative">
+                    <div class="portfolio-preview">
+                        <div class="portfolio-mockup mockup-fitness">
+                            <div class="mockup-browser">
+                                <div class="mockup-dots"><span></span><span></span><span></span></div>
+                                <div class="mockup-url">www.pulsefit.app</div>
+                            </div>
+                            <div class="mockup-body"></div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <span class="overlay-tag">Creative</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>PulseFit</h3>
+                        <p>A bold, dark-themed fitness app landing page with animated workout previews, pricing tiers, and a waitlist sign-up flow.</p>
+                        <div class="portfolio-tags">
+                            <span>Next.js</span>
+                            <span>Framer Motion</span>
+                            <span>Tailwind</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Creative Agency -->
+                <div class="portfolio-item" data-category="creative">
+                    <div class="portfolio-preview">
+                        <div class="portfolio-mockup mockup-agency">
+                            <div class="mockup-browser">
+                                <div class="mockup-dots"><span></span><span></span><span></span></div>
+                                <div class="mockup-url">www.spectrumcreative.co</div>
+                            </div>
+                            <div class="mockup-body"></div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <span class="overlay-tag">Creative</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Spectrum Creative</h3>
+                        <p>A vibrant creative agency portfolio with smooth animations, case study layouts, team profiles, and an interactive project request form.</p>
+                        <div class="portfolio-tags">
+                            <span>Vue.js</span>
+                            <span>GSAP</span>
+                            <span>Nuxt</span>
+                            <span>Sanity CMS</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Ready to Start?</span>
+                <h2 class="section-title">Let's Design Your Next Website</h2>
+                <p class="section-desc">Whether you need a simple landing page or a complex web application, we'll craft something that reflects your brand and drives results.</p>
+            </div>
+            <a href="index.html#contact" class="btn btn-primary">Get a Free Quote</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="nav-logo">
+                        <span class="logo-icon">S</span>
+                        <span class="logo-text">Stillwell<span class="logo-accent">Software Solutions</span></span>
+                    </a>
+                    <p>Building software that moves business forward.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <a href="index.html">Home</a>
+                    <a href="index.html#services">Services</a>
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <a href="website-design.html">Website Design</a>
+                    <a href="index.html#services">Custom Software</a>
+                    <a href="index.html#services">Mobile Apps</a>
+                    <a href="index.html#services">Cloud Solutions</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Stillwell Software Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
