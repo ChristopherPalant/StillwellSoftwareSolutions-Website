@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mercantile Dining &amp; Provision — Union Station, Denver</title>
+<meta name="description" content="Chef Alex Seidel's James Beard Award-winning farm-to-table restaurant inside Denver's historic Union Station. A café by day, a tasting room by night.">
+
+<!-- Fonts & Icons -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+/* -----------------------------------------------------------------
+   Mercantile Dining & Provision — Editorial Redesign
+   Stillwell Software Solutions · 2026
+   Palette: forest / cream / terracotta / brass
+------------------------------------------------------------------ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Color system */
+  --ink:          #141410;
+  --ink-soft:     #2A2A21;
+  --forest:       #2A3428;
+  --forest-deep:  #1B231A;
+  --cream:        #F4EEE0;
+  --cream-light:  #FAF6EC;
+  --cream-dark:   #E5DCC5;
+  --terracotta:   #B8542A;
+  --terracotta-d: #96431F;
+  --brass:        #B8893F;
+  --stone:        #7A7468;
+  --line:         rgba(20, 20, 15, 0.14);
+  --line-strong:  rgba(20, 20, 15, 0.28);
+  --line-cream:   rgba(244, 238, 224, 0.18);
+
+  /* Type */
+  --f-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --f-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --f-mono:    'JetBrains Mono', 'Courier New', monospace;
+
+  /* Layout */
+  --container: 1400px;
+  --gutter:    clamp(20px, 4vw, 64px);
+  --section-y: clamp(90px, 12vw, 160px);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Paper grain — subtle tactile warmth */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9000;
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0 0.05 0 0 0 0.28 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { background: none; border: 0; font: inherit; cursor: pointer; color: inherit; }
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* ---------- Typography primitives ---------- */
+
+.kicker,
+.section-label,
+.footer__col h4,
+.room__tag,
+.room__hours,
+.dish__tag,
+.footer__bottom,
+.topbar,
+.meta__label,
+.stat__label,
+.btn,
+.award__label {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--ink-soft);
+  margin-bottom: 40px;
+}
+.kicker__num {
+  font-family: var(--f-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 15px;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--terracotta);
+}
+.kicker__div {
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 48px;
+  color: var(--ink-soft);
+}
+.section-head .num {
+  font-family: var(--f-display);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--terracotta);
+  font-weight: 400;
+}
+.section-head::before {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: var(--ink);
+  opacity: 0.4;
+}
+.section-head--dark,
+.section-head--dark .num { color: var(--cream); }
+.section-head--dark::before { background: var(--cream); opacity: 0.5; }
+.section-head--light { color: var(--cream); }
+.section-head--light::before { background: var(--cream); opacity: 0.6; }
+.section-head--light .num { color: var(--brass); }
+
+.section-title {
+  font-family: var(--f-display);
+  font-size: clamp(38px, 5.2vw, 72px);
+  line-height: 1.04;
+  font-weight: 300;
+  letter-spacing: -0.018em;
+  color: var(--ink);
+}
+.section-title em {
+  font-style: italic;
+  color: var(--terracotta);
+  font-weight: 400;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 28px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn--primary {
+  background: var(--ink);
+  color: var(--cream);
+}
+.btn--primary:hover {
+  background: var(--terracotta);
+}
+.btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+.btn--ghost:hover {
+  background: var(--ink);
+  color: var(--cream);
+  border-color: var(--ink);
+}
+.btn--dark {
+  background: var(--forest);
+  color: var(--cream);
+}
+.btn--dark:hover { background: var(--forest-deep); }
+.btn--light {
+  background: var(--cream);
+  color: var(--ink);
+}
+.btn--light:hover { background: var(--brass); color: var(--ink); }
+.btn--lg { padding: 22px 40px; font-size: 12px; }
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line-strong);
+  transition: all 0.3s ease;
+}
+.link-arrow:hover {
+  color: var(--terracotta);
+  border-color: var(--terracotta);
+  gap: 14px;
+}
+
+/* ---------- Top utility bar ---------- */
+
+.topbar {
+  background: var(--forest-deep);
+  color: var(--cream);
+  font-size: 10.5px;
+  padding: 10px 0;
+  position: relative;
+  z-index: 100;
+}
+.topbar__inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.topbar__center {
+  opacity: 0.78;
+  letter-spacing: 0.18em;
+}
+.topbar__right a { opacity: 0.85; transition: opacity 0.2s; }
+.topbar__right a:hover { opacity: 1; color: var(--brass); }
+.topbar__right .sep { margin: 0 10px; opacity: 0.4; }
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.status .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #8BBF6C;
+  box-shadow: 0 0 0 3px rgba(139, 191, 108, 0.2);
+  animation: pulse 2.6s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(139, 191, 108, 0.18); }
+  50%      { box-shadow: 0 0 0 6px rgba(139, 191, 108, 0.05); }
+}
+
+/* ---------- Navigation ---------- */
+
+.nav {
+  background: var(--cream);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  backdrop-filter: blur(6px);
+}
+.nav__inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 22px var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+.brand {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.brand__name {
+  font-family: var(--f-display);
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.brand__name--lg { font-size: 58px; }
+.brand__tag {
+  font-family: var(--f-mono);
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  color: var(--stone);
+  margin-top: 5px;
+  text-transform: uppercase;
+}
+.nav__links {
+  display: flex;
+  gap: 38px;
+}
+.nav__links a {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  position: relative;
+  padding: 6px 0;
+  transition: color 0.25s;
+}
+.nav__links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--terracotta);
+  transition: width 0.3s ease;
+}
+.nav__links a:hover { color: var(--terracotta); }
+.nav__links a:hover::after { width: 100%; }
+.nav__burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+}
+.nav__burger span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--ink);
+  transition: all 0.3s;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--forest-deep);
+}
+.hero__image {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.58) saturate(0.9);
+}
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(100deg, rgba(20,20,15,0.85) 0%, rgba(20,20,15,0.55) 45%, rgba(20,20,15,0.15) 100%),
+    linear-gradient(180deg, rgba(20,20,15,0.35) 0%, transparent 30%, transparent 70%, rgba(20,20,15,0.55) 100%);
+}
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  max-width: var(--container);
+  width: 100%;
+  margin: 0 auto;
+  padding: 120px var(--gutter) 180px;
+}
+.hero__content {
+  max-width: 780px;
+  color: var(--cream);
+}
+.hero .kicker {
+  color: var(--cream);
+  opacity: 0.78;
+  margin-bottom: 36px;
+}
+.hero .kicker__num { color: var(--brass); }
+.hero__title {
+  font-family: var(--f-display);
+  font-weight: 300;
+  font-size: clamp(44px, 7vw, 104px);
+  line-height: 0.98;
+  letter-spacing: -0.028em;
+  color: var(--cream);
+  margin-bottom: 42px;
+}
+.hero__title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--brass);
+}
+.hero__sub {
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 560px;
+  margin-bottom: 48px;
+  color: var(--cream);
+  opacity: 0.85;
+}
+.hero__cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.hero__cta .btn--primary {
+  background: var(--terracotta);
+  color: var(--cream);
+}
+.hero__cta .btn--primary:hover { background: var(--terracotta-d); }
+.hero__cta .btn--ghost {
+  color: var(--cream);
+  border-color: rgba(244, 238, 224, 0.4);
+}
+.hero__cta .btn--ghost:hover {
+  background: var(--cream);
+  color: var(--ink);
+  border-color: var(--cream);
+}
+
+/* Hero meta ticker */
+.hero__meta {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  display: flex;
+  border-top: 1px solid rgba(244, 238, 224, 0.18);
+  color: var(--cream);
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.hero__meta-item {
+  flex: 1;
+  padding: 20px var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-right: 1px solid rgba(244, 238, 224, 0.12);
+  background: rgba(20, 20, 15, 0.35);
+}
+.hero__meta-item:last-child { border-right: 0; }
+.meta__label {
+  color: var(--brass);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+}
+
+/* ---------- Marquee ---------- */
+
+.marquee {
+  background: var(--cream-dark);
+  color: var(--ink);
+  padding: 22px 0;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+}
+.marquee__track {
+  display: flex;
+  gap: 50px;
+  white-space: nowrap;
+  animation: slide 55s linear infinite;
+  font-family: var(--f-display);
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 300;
+}
+.marquee__track span {
+  display: inline-block;
+}
+.marquee__track .dot {
+  color: var(--terracotta);
+  font-style: normal;
+}
+@keyframes slide {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ---------- Intro / Philosophy ---------- */
+
+.intro {
+  padding: var(--section-y) 0;
+  background: var(--cream);
+}
+.intro__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 100px;
+  align-items: start;
+}
+.intro__title {
+  font-family: var(--f-display);
+  font-size: clamp(36px, 4.6vw, 68px);
+  line-height: 1.06;
+  font-weight: 300;
+  letter-spacing: -0.018em;
+}
+.intro__title em {
+  font-style: italic;
+  color: var(--terracotta);
+}
+.intro__body p {
+  font-size: 16px;
+  line-height: 1.75;
+  margin-bottom: 20px;
+  color: var(--ink-soft);
+  max-width: 44ch;
+}
+.intro__body .link-arrow { margin-top: 14px; }
+
+/* ---------- Two Rooms ---------- */
+
+.rooms {
+  padding: var(--section-y) 0;
+  background: var(--cream-light);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.rooms .section-title {
+  max-width: 900px;
+  margin-bottom: 72px;
+}
+.rooms__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+}
+.room {
+  display: flex;
+  flex-direction: column;
+}
+.room__img {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  margin-bottom: 36px;
+}
+.room__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.room:hover .room__img img { transform: scale(1.04); }
+.room__tag {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  padding: 10px 16px;
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+}
+.room__tag--dark {
+  background: var(--ink);
+  color: var(--cream);
+}
+.room__hours {
+  color: var(--terracotta);
+  font-size: 10.5px;
+  margin-bottom: 14px;
+  letter-spacing: 0.18em;
+}
+.room__title {
+  font-family: var(--f-display);
+  font-size: clamp(32px, 3.6vw, 52px);
+  font-weight: 300;
+  letter-spacing: -0.015em;
+  margin-bottom: 18px;
+  line-height: 1;
+}
+.room__body p {
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin-bottom: 22px;
+  max-width: 48ch;
+}
+
+/* ---------- Farm ---------- */
+
+.farm {
+  padding: var(--section-y) 0;
+  background: var(--forest);
+  color: var(--cream);
+  position: relative;
+}
+.farm::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(244, 238, 224, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 238, 224, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+}
+.farm__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+}
+.farm__image {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+.farm__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.92) brightness(0.95);
+}
+.farm__title {
+  font-family: var(--f-display);
+  font-size: clamp(36px, 4.4vw, 62px);
+  line-height: 1.06;
+  font-weight: 300;
+  letter-spacing: -0.018em;
+  color: var(--cream);
+  margin-bottom: 32px;
+}
+.farm__content p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: rgba(244, 238, 224, 0.82);
+  margin-bottom: 20px;
+  max-width: 52ch;
+}
+.farm__stats {
+  margin-top: 50px;
+  padding-top: 40px;
+  border-top: 1px solid var(--line-cream);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.stat__num {
+  font-family: var(--f-display);
+  font-size: clamp(40px, 3.8vw, 56px);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--brass);
+  margin-bottom: 10px;
+  font-feature-settings: "onum" 1;
+}
+.stat__label {
+  font-size: 9.5px;
+  opacity: 0.7;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+}
+
+/* ---------- Menu ---------- */
+
+.menu {
+  padding: var(--section-y) 0;
+  background: var(--cream);
+}
+.menu__header {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 80px;
+}
+.menu__note {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  max-width: 44ch;
+  padding-bottom: 14px;
+}
+.menu__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px 38px;
+}
+.dish {
+  display: flex;
+  flex-direction: column;
+}
+.dish__img {
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+  margin-bottom: 26px;
+  background: var(--cream-dark);
+}
+.dish__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.dish:hover .dish__img img { transform: scale(1.05); }
+.dish__tag {
+  font-size: 9.5px;
+  color: var(--terracotta);
+  letter-spacing: 0.22em;
+  margin-bottom: 10px;
+}
+.dish__name {
+  font-family: var(--f-display);
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.012em;
+  margin-bottom: 10px;
+  line-height: 1.15;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+.dish__name::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+  transform: translateY(-6px);
+}
+.dish__desc {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  font-style: italic;
+  font-family: var(--f-display);
+  margin-bottom: 14px;
+  max-width: 38ch;
+}
+.dish__price {
+  font-family: var(--f-mono);
+  font-size: 13px;
+  color: var(--terracotta);
+  font-weight: 500;
+}
+.dish__price::before { content: '$ '; opacity: 0.5; }
+.menu__foot {
+  margin-top: 80px;
+  text-align: center;
+  padding-top: 60px;
+  border-top: 1px solid var(--line);
+}
+
+/* ---------- Press ---------- */
+
+.press {
+  padding: var(--section-y) 0;
+  background: var(--ink);
+  color: var(--cream);
+}
+.press__title {
+  font-family: var(--f-display);
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 1.05;
+  font-weight: 300;
+  letter-spacing: -0.018em;
+  margin-bottom: 80px;
+  max-width: 14ch;
+}
+.press__quotes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 56px;
+  margin-bottom: 90px;
+}
+.press blockquote {
+  border-top: 1px solid rgba(244, 238, 224, 0.2);
+  padding-top: 28px;
+}
+.press blockquote p {
+  font-family: var(--f-display);
+  font-size: 22px;
+  line-height: 1.35;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--cream);
+  margin-bottom: 24px;
+}
+.press blockquote cite {
+  font-family: var(--f-mono);
+  font-style: normal;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--brass);
+  text-transform: uppercase;
+}
+.press__logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px 56px;
+  padding: 56px 0;
+  border-top: 1px solid rgba(244, 238, 224, 0.14);
+  border-bottom: 1px solid rgba(244, 238, 224, 0.14);
+  margin-bottom: 70px;
+}
+.press__logos span {
+  font-family: var(--f-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 18px;
+  color: rgba(244, 238, 224, 0.55);
+  letter-spacing: 0.02em;
+  transition: color 0.3s;
+}
+.press__logos span:hover { color: var(--brass); }
+.press__award {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 32px;
+  border: 1px solid rgba(244, 238, 224, 0.18);
+  background: rgba(244, 238, 224, 0.02);
+}
+.award__seal {
+  width: 72px;
+  height: 72px;
+  border: 1px solid var(--brass);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brass);
+  font-size: 32px;
+  flex-shrink: 0;
+}
+.award__label {
+  font-size: 9.5px;
+  color: var(--brass);
+  letter-spacing: 0.24em;
+  margin-bottom: 6px;
+}
+.award__name {
+  font-family: var(--f-display);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+.award__detail {
+  font-size: 13px;
+  color: rgba(244, 238, 224, 0.68);
+  font-style: italic;
+  font-family: var(--f-display);
+}
+
+/* ---------- Private Events ---------- */
+
+.events {
+  position: relative;
+  min-height: 640px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.events__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.events__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5) saturate(0.85);
+}
+.events__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(95deg, rgba(20,20,15,0.78) 0%, rgba(20,20,15,0.35) 80%);
+}
+.events__content {
+  position: relative;
+  z-index: 2;
+  max-width: var(--container);
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--section-y) var(--gutter);
+  color: var(--cream);
+}
+.events__title {
+  font-family: var(--f-display);
+  font-size: clamp(36px, 5vw, 68px);
+  line-height: 1.05;
+  font-weight: 300;
+  letter-spacing: -0.018em;
+  max-width: 16ch;
+  margin-bottom: 28px;
+  color: var(--cream);
+}
+.events__content p {
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 52ch;
+  color: rgba(244, 238, 224, 0.85);
+  margin-bottom: 40px;
+}
+
+/* ---------- Reserve ---------- */
+
+.reserve {
+  padding: var(--section-y) 0;
+  background: var(--cream);
+  text-align: center;
+}
+.reserve .section-head {
+  justify-content: center;
+}
+.reserve .section-head::before { display: none; }
+.reserve__title {
+  font-family: var(--f-display);
+  font-size: clamp(48px, 6vw, 90px);
+  line-height: 1;
+  font-weight: 300;
+  letter-spacing: -0.022em;
+  margin-bottom: 22px;
+}
+.reserve__title::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: var(--terracotta);
+  margin: 32px auto 0;
+}
+.reserve p {
+  font-size: 17px;
+  color: var(--ink-soft);
+  max-width: 44ch;
+  margin: 0 auto 48px;
+  line-height: 1.65;
+}
+.reserve__cta {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  background: var(--forest-deep);
+  color: var(--cream);
+  padding: 100px 0 30px;
+}
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr 1.1fr;
+  gap: 60px;
+  padding-bottom: 70px;
+  border-bottom: 1px solid var(--line-cream);
+}
+.footer .brand__name {
+  color: var(--cream);
+}
+.footer .brand__tag {
+  color: var(--brass);
+  margin-top: 4px;
+}
+.footer__tagline {
+  margin-top: 26px;
+  font-family: var(--f-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.5;
+  max-width: 28ch;
+  color: rgba(244, 238, 224, 0.75);
+}
+.footer__col h4 {
+  color: var(--brass);
+  margin-bottom: 22px;
+  font-size: 10.5px;
+}
+.footer__col address {
+  font-style: normal;
+  line-height: 1.7;
+  font-size: 14.5px;
+  color: rgba(244, 238, 224, 0.85);
+  margin-bottom: 16px;
+}
+.footer__col > a {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cream);
+  border-bottom: 1px solid rgba(244, 238, 224, 0.3);
+  padding-bottom: 3px;
+  transition: all 0.3s;
+}
+.footer__col > a:hover { color: var(--brass); border-color: var(--brass); }
+.footer__col dl {
+  font-size: 14px;
+  line-height: 1.65;
+}
+.footer__col dt {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-top: 14px;
+}
+.footer__col dt:first-child { margin-top: 0; }
+.footer__col dd {
+  color: rgba(244, 238, 224, 0.85);
+  font-size: 14px;
+}
+.footer__col p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(244, 238, 224, 0.72);
+  margin-bottom: 18px;
+  max-width: 28ch;
+}
+.footer__form {
+  display: flex;
+  border-bottom: 1px solid rgba(244, 238, 224, 0.28);
+  padding-bottom: 12px;
+  margin-bottom: 26px;
+}
+.footer__form input {
+  flex: 1;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  font-size: 14px;
+  color: var(--cream);
+  padding: 4px 0;
+}
+.footer__form input::placeholder {
+  color: rgba(244, 238, 224, 0.4);
+  font-style: italic;
+  font-family: var(--f-display);
+}
+.footer__form button {
+  color: var(--brass);
+  font-size: 20px;
+  padding: 0 6px;
+  transition: transform 0.3s;
+}
+.footer__form button:hover { transform: translateX(4px); }
+.footer__social {
+  display: flex;
+  gap: 14px;
+}
+.footer__social a {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(244, 238, 224, 0.24);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: rgba(244, 238, 224, 0.75);
+  transition: all 0.3s;
+}
+.footer__social a:hover {
+  background: var(--brass);
+  border-color: var(--brass);
+  color: var(--forest-deep);
+}
+.footer__bottom {
+  padding-top: 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  color: rgba(244, 238, 224, 0.5);
+  letter-spacing: 0.14em;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer__links {
+  display: flex;
+  gap: 28px;
+}
+.footer__links a:hover { color: var(--brass); }
+
+/* ---------- Fade-in on scroll ---------- */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1s ease, transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1100px) {
+  .nav__links { gap: 26px; }
+  .intro__grid,
+  .menu__header { grid-template-columns: 1fr; gap: 44px; }
+  .farm__grid { grid-template-columns: 1fr; gap: 60px; }
+  .farm__stats { grid-template-columns: repeat(2, 1fr); }
+  .press__quotes { grid-template-columns: 1fr; gap: 40px; }
+  .footer__grid { grid-template-columns: 1fr 1fr; gap: 44px; }
+  .menu__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 820px) {
+  .topbar__center { display: none; }
+  .nav__links, .nav .btn { display: none; }
+  .nav__burger { display: flex; }
+  .nav__inner { padding: 18px var(--gutter); }
+  .brand__name { font-size: 24px; }
+  .hero { min-height: auto; }
+  .hero__inner { padding: 90px var(--gutter) 160px; }
+  .hero__title { font-size: clamp(38px, 9vw, 58px); }
+  .hero__meta { flex-wrap: wrap; font-size: 9.5px; }
+  .hero__meta-item {
+    flex: 1 1 50%;
+    padding: 14px var(--gutter);
+    border-bottom: 1px solid rgba(244, 238, 224, 0.12);
+  }
+  .rooms__grid { grid-template-columns: 1fr; gap: 64px; }
+  .menu__grid { grid-template-columns: 1fr; gap: 48px; }
+  .footer__grid { grid-template-columns: 1fr; gap: 48px; }
+  .footer__bottom { flex-direction: column; align-items: flex-start; }
+  .marquee__track { font-size: 17px; gap: 36px; }
+  .reserve__cta { flex-direction: column; align-items: center; }
+  .reserve__cta .btn { width: 100%; max-width: 320px; }
+  .press__award { flex-direction: column; text-align: center; gap: 20px; }
+  .press__logos { gap: 24px 36px; }
+  .press__logos span { font-size: 15px; }
+}
+
+@media (max-width: 520px) {
+  .topbar__right .sep,
+  .topbar__right a:last-child { display: none; }
+  .hero__cta { flex-direction: column; align-items: stretch; }
+  .hero__cta .btn { width: 100%; }
+  .farm__stats { grid-template-columns: 1fr 1fr; }
+}
+
+/* Mobile nav overlay */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: var(--cream);
+  z-index: 200;
+  display: none;
+  flex-direction: column;
+  padding: 80px 40px 40px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: var(--f-display);
+  font-size: 32px;
+  font-weight: 300;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+}
+.mobile-menu__close {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  font-size: 24px;
+}
+.mobile-menu .btn {
+  margin-top: 32px;
+  justify-content: center;
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     TOP UTILITY BAR
+     ═══════════════════════════════════════════════════ -->
+<div class="topbar">
+  <div class="topbar__inner">
+    <div class="topbar__left">
+      <span class="status"><span class="dot"></span>Open Today · 7A — 10P</span>
+    </div>
+    <div class="topbar__center">1701 Wynkoop Street · Denver Union Station · Colorado</div>
+    <div class="topbar__right">
+      <a href="tel:+13038742800">303.874.2800</a>
+      <span class="sep">·</span>
+      <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════════════════════ -->
+<header class="nav">
+  <div class="nav__inner">
+    <a href="#" class="brand" aria-label="Mercantile Dining and Provision">
+      <span class="brand__name">Mercantile</span>
+      <span class="brand__tag">Dining &amp; Provision</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#menus">Menus</a>
+      <a href="#rooms">The Rooms</a>
+      <a href="#farm">Our Farm</a>
+      <a href="#press">Press</a>
+      <a href="#events">Private Events</a>
+    </nav>
+    <a href="#reserve" class="btn btn--primary">Reserve a Table</a>
+    <button class="nav__burger" aria-label="Open menu" id="burger">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile menu overlay -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu__close" id="closeMenu" aria-label="Close menu">✕</button>
+  <a href="#menus">Menus</a>
+  <a href="#rooms">The Rooms</a>
+  <a href="#farm">Our Farm</a>
+  <a href="#press">Press</a>
+  <a href="#events">Private Events</a>
+  <a href="#reserve" class="btn btn--primary">Reserve a Table</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero__image">
+    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=2000&q=80&auto=format&fit=crop" alt="Mercantile dining room at dusk">
+    <div class="hero__overlay"></div>
+  </div>
+  <div class="hero__inner">
+    <div class="hero__content">
+      <div class="kicker">
+        <span class="kicker__num">№ 01</span>
+        <span class="kicker__div"></span>
+        <span>Est. MMXIV &nbsp;·&nbsp; Denver Union Station</span>
+      </div>
+      <h1 class="hero__title">
+        A café by <em>morning,</em><br>
+        a tasting room by<br>
+        <em>night</em> — and always,<br>
+        the farm at the center.
+      </h1>
+      <p class="hero__sub">
+        Chef Alex Seidel's James Beard Award-winning Mercantile is part market larder, part dining room, and wholly devoted to the producers of Colorado's high plains and mountain valleys.
+      </p>
+      <div class="hero__cta">
+        <a href="#reserve" class="btn btn--primary">Reserve a Table</a>
+        <a href="#menus" class="btn btn--ghost">View the Menus →</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero__meta">
+    <div class="hero__meta-item"><span class="meta__label">LAT</span>39.7526° N</div>
+    <div class="hero__meta-item"><span class="meta__label">LON</span>104.9999° W</div>
+    <div class="hero__meta-item"><span class="meta__label">ELEV</span>5,280 ft</div>
+    <div class="hero__meta-item"><span class="meta__label">Est.</span>MMXIV</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     MARQUEE TICKER
+     ═══════════════════════════════════════════════════ -->
+<div class="marquee">
+  <div class="marquee__track">
+    <span>Fruition Farms Sheep's-Milk Ricotta</span>
+    <span class="dot">✦</span>
+    <span>Colorado Lamb Ragù</span>
+    <span class="dot">✦</span>
+    <span>Wild Mountain Mushrooms</span>
+    <span class="dot">✦</span>
+    <span>Hand-Churned Cultured Butter</span>
+    <span class="dot">✦</span>
+    <span>High Plains Trout</span>
+    <span class="dot">✦</span>
+    <span>Palisade Peaches</span>
+    <span class="dot">✦</span>
+    <span>Olathe Sweet Corn</span>
+    <span class="dot">✦</span>
+    <span>Heirloom Grains</span>
+    <span class="dot">✦</span>
+    <!-- duplicate for seamless loop -->
+    <span>Fruition Farms Sheep's-Milk Ricotta</span>
+    <span class="dot">✦</span>
+    <span>Colorado Lamb Ragù</span>
+    <span class="dot">✦</span>
+    <span>Wild Mountain Mushrooms</span>
+    <span class="dot">✦</span>
+    <span>Hand-Churned Cultured Butter</span>
+    <span class="dot">✦</span>
+    <span>High Plains Trout</span>
+    <span class="dot">✦</span>
+    <span>Palisade Peaches</span>
+    <span class="dot">✦</span>
+    <span>Olathe Sweet Corn</span>
+    <span class="dot">✦</span>
+    <span>Heirloom Grains</span>
+    <span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     INTRO / PHILOSOPHY
+     ═══════════════════════════════════════════════════ -->
+<section class="intro">
+  <div class="container">
+    <div class="section-head fade-in">
+      <span class="num">№ 02</span>
+      <span class="section-label">Our Philosophy</span>
+    </div>
+    <div class="intro__grid fade-in">
+      <h2 class="intro__title">
+        A larder of <em>Colorado,</em> set inside the stone halls of Denver's historic Union Station.
+      </h2>
+      <div class="intro__body">
+        <p>When Mercantile opened its doors in 2014, Chef Alex Seidel carried with him the soil of Fruition Farms — the sheep dairy and vegetable operation he has kept in Larkspur since 2007. The menu is rewritten each morning from what the farm sends down that week.</p>
+        <p>Nothing travels far. Butter is churned in the kitchen. Ricotta is cultured in the back room. The lamb comes from animals we raised by hand.</p>
+        <a href="#farm" class="link-arrow">More about the farm →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     TWO ROOMS — DAY / EVENING
+     ═══════════════════════════════════════════════════ -->
+<section id="rooms" class="rooms">
+  <div class="container">
+    <div class="section-head fade-in">
+      <span class="num">№ 03</span>
+      <span class="section-label">Two Rooms, One Table</span>
+    </div>
+    <h2 class="section-title fade-in">
+      Come for the <em>pour-over.</em><br>
+      Stay for the seven-course.
+    </h2>
+    <div class="rooms__grid">
+      <!-- DAY -->
+      <article class="room fade-in">
+        <div class="room__img">
+          <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1400&q=80&auto=format&fit=crop" alt="The café in morning light">
+          <span class="room__tag">Day — The Café</span>
+        </div>
+        <div class="room__body">
+          <div class="room__hours">7:00 A.M. — 3:00 P.M. · Daily</div>
+          <h3 class="room__title">The Café</h3>
+          <p>All-day breakfast, pastries from our baker, seasonal salads and sandwiches, espresso by Denver's Corvus Coffee, and a retail shelf of our preserves, butters and breads to carry home.</p>
+          <a href="#" class="link-arrow">Café Menu →</a>
+        </div>
+      </article>
+      <!-- EVENING -->
+      <article class="room fade-in">
+        <div class="room__img">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=80&auto=format&fit=crop" alt="The tasting room by candlelight">
+          <span class="room__tag room__tag--dark">Evening — The Tasting Room</span>
+        </div>
+        <div class="room__body">
+          <div class="room__hours">5:00 — 10:00 P.M. · Tuesday — Saturday</div>
+          <h3 class="room__title">The Tasting Room</h3>
+          <p>Five- and seven-course seasonal menus served at a single candlelit turn. The kitchen cooks for what is best that week — heritage grains, river fish, and the lamb and vegetables of Fruition Farms.</p>
+          <a href="#" class="link-arrow">Tasting Menu →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     FARM
+     ═══════════════════════════════════════════════════ -->
+<section id="farm" class="farm">
+  <div class="container">
+    <div class="section-head section-head--dark fade-in">
+      <span class="num">№ 04</span>
+      <span class="section-label">From Fruition Farms</span>
+    </div>
+    <div class="farm__grid">
+      <div class="farm__image fade-in">
+        <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=1400&q=80&auto=format&fit=crop" alt="Fruition Farms sheep pasture in Larkspur, Colorado">
+      </div>
+      <div class="farm__content fade-in">
+        <h2 class="farm__title">
+          Twelve acres. Two hundred sheep. One kitchen, forty-five minutes south.
+        </h2>
+        <p>Fruition Farms is chef Alex Seidel's sheep dairy and produce garden in Larkspur, Colorado — a working farm that supplies nearly everything on the Mercantile table. The sheep are milked by hand. The ricotta is made in small batches each morning. The herbs are pulled at dawn and on your plate by dinner.</p>
+        <p>What doesn't come from the farm comes from neighbors: Palisade peaches, Olathe sweet corn, Rio Grande trout, Yampa Valley lamb. The shorter the distance, the better the food.</p>
+        <div class="farm__stats">
+          <div class="stat">
+            <div class="stat__num">12</div>
+            <div class="stat__label">Acres under<br>cultivation</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num">200+</div>
+            <div class="stat__label">East Friesian<br>sheep</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num">45</div>
+            <div class="stat__label">Minutes to<br>the table</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num">2007</div>
+            <div class="stat__label">Year the farm<br>began</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     MENU
+     ═══════════════════════════════════════════════════ -->
+<section id="menus" class="menu">
+  <div class="container">
+    <div class="section-head fade-in">
+      <span class="num">№ 05</span>
+      <span class="section-label">A Tasting of the Menu</span>
+    </div>
+    <div class="menu__header fade-in">
+      <h2 class="section-title">
+        Written each morning.<br>
+        Served that <em>evening.</em>
+      </h2>
+      <p class="menu__note">
+        The menu changes with what the farm sends down and what the fishmonger hauls in. A sampling of dishes from this week's table, in no particular order.
+      </p>
+    </div>
+    <div class="menu__grid">
+
+      <article class="dish fade-in">
+        <div class="dish__img">
+          <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=900&q=80&auto=format&fit=crop" alt="Heirloom carrots dish">
+        </div>
+        <div class="dish__body">
+          <div class="dish__tag">To Begin</div>
+          <h3 class="dish__name">Heirloom Carrots</h3>
+          <p class="dish__desc">Whipped fromage blanc, dukkah, wildflower honey, rye crumb.</p>
+          <div class="dish__price">16</div>
+        </div>
+      </article>
+
+      <article class="dish fade-in">
+        <div class="dish__img">
+          <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=900&q=80&auto=format&fit=crop" alt="Seasonal crudo">
+        </div>
+        <div class="dish__body">
+          <div class="dish__tag">To Begin</div>
+          <h3 class="dish__name">Market Crudo</h3>
+          <p class="dish__desc">Meyer lemon oil, pickled shallot, fennel pollen, sea salt.</p>
+          <div class="dish__price">22</div>
+        </div>
+      </article>
+
+      <article class="dish fade-in">
+        <div class="dish__img">
+          <img src="https://images.unsplash.com/photo-1518977956812-cd3dbadaaf31?w=900&q=80&auto=format&fit=crop" alt="Wagyu tartare">
+        </div>
+        <div class="dish__body">
+          <div class="dish__tag">To Share</div>
+          <h3 class="dish__name">Wagyu Tartare</h3>
+          <p class="dish__desc">Smoked egg yolk, black garlic, crisp sourdough, chives.</p>
+          <div class="dish__price">24</div>
+        </div>
+      </article>
+
+      <article class="dish fade-in">
+        <div class="dish__img">
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=900&q=80&auto=format&fit=crop" alt="Colorado lamb pappardelle">
+        </div>
+        <div class="dish__body">
+          <div class="dish__tag">The Table</div>
+          <h3 class="dish__name">Colorado Lamb Ragù</h3>
+          <p class="dish__desc">Handmade pappardelle, Fruition Farms ricotta, fines herbes.</p>
+          <div class="dish__price">32</div>
+        </div>
+      </article>
+
+      <article class="dish fade-in">
+        <div class="dish__img">
+          <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=900&q=80&auto=format&fit=crop" alt="Brook trout">
+        </div>
+        <div class="dish__body">
+          <div class="dish__tag">The Table</div>
+          <h3 class="dish__name">Brook Trout</h3>
+          <p class="dish__desc">Sunchoke, brown butter, toasted hazelnut, crispy capers.</p>
+          <div class="dish__price">38</div>
+        </div>
+      </article>
+
+      <article class="dish fade-in">
+        <div class="dish__img">
+          <img src="https://images.unsplash.com/photo-1432139509613-5c4255815697?w=900&q=80&auto=format&fit=crop" alt="Duck breast dish">
+        </div>
+        <div class="dish__body">
+          <div class="dish__tag">The Table</div>
+          <h3 class="dish__name">Roasted Duck Breast</h3>
+          <p class="dish__desc">Bing cherries, savoy cabbage, juniper jus, rye berries.</p>
+          <div class="dish__price">42</div>
+        </div>
+      </article>
+
+    </div>
+    <div class="menu__foot fade-in">
+      <a href="#" class="btn btn--dark">View All Menus →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     PRESS
+     ═══════════════════════════════════════════════════ -->
+<section id="press" class="press">
+  <div class="container">
+    <div class="section-head section-head--dark fade-in">
+      <span class="num">№ 06</span>
+      <span class="section-label">Spoken Of</span>
+    </div>
+    <h2 class="press__title fade-in">
+      A decade of <em style="color:var(--brass); font-style: italic;">kind words.</em>
+    </h2>
+
+    <div class="press__quotes">
+      <blockquote class="fade-in">
+        <p>"One of the most thoughtful farm-to-table operations in the Mountain West."</p>
+        <cite>Food &amp; Wine</cite>
+      </blockquote>
+      <blockquote class="fade-in">
+        <p>"Seidel's cooking has a quiet confidence that leaves you thinking about dinner for days."</p>
+        <cite>Bon Appétit</cite>
+      </blockquote>
+      <blockquote class="fade-in">
+        <p>"The case for Denver as a great American dining city begins at Mercantile."</p>
+        <cite>The New York Times</cite>
+      </blockquote>
+    </div>
+
+    <div class="press__logos fade-in">
+      <span>James Beard Foundation</span>
+      <span>Food &amp; Wine</span>
+      <span>Bon Appétit</span>
+      <span>The New York Times</span>
+      <span>5280 Magazine</span>
+      <span>Eater Denver</span>
+      <span>Condé Nast Traveler</span>
+      <span>Westword</span>
+    </div>
+
+    <div class="press__award fade-in">
+      <div class="award__seal">★</div>
+      <div class="award__text">
+        <div class="award__label">Awarded</div>
+        <div class="award__name">James Beard Foundation</div>
+        <div class="award__detail">Best Chef: Southwest — Alex Seidel</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     PRIVATE EVENTS
+     ═══════════════════════════════════════════════════ -->
+<section id="events" class="events">
+  <div class="events__bg">
+    <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=2000&q=80&auto=format&fit=crop" alt="Private dining setting">
+  </div>
+  <div class="events__content">
+    <div class="section-head section-head--light fade-in">
+      <span class="num">№ 07</span>
+      <span class="section-label">Private Events</span>
+    </div>
+    <h2 class="events__title fade-in">
+      A rehearsal dinner, a boardroom lunch, a reason to <em style="color:var(--brass);">gather.</em>
+    </h2>
+    <p class="fade-in">
+      From intimate chef's-table dinners for ten, to full buy-outs of the dining room for one hundred. Our events team will design the menu, pour the wines, and set the table.
+    </p>
+    <div class="fade-in">
+      <a href="#" class="btn btn--light">Plan an Event →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     RESERVE
+     ═══════════════════════════════════════════════════ -->
+<section id="reserve" class="reserve">
+  <div class="container">
+    <div class="section-head fade-in">
+      <span class="num">№ 08</span>
+      <span class="section-label">Join Us</span>
+    </div>
+    <h2 class="reserve__title fade-in">
+      A table is <em style="font-style:italic; color:var(--terracotta);">waiting.</em>
+    </h2>
+    <p class="fade-in">
+      Reservations for the Café and the Tasting Room are open sixty days in advance. Walk-ins are welcome at the bar.
+    </p>
+    <div class="reserve__cta fade-in">
+      <a href="#" class="btn btn--primary btn--lg">Reserve Through Tock</a>
+      <a href="tel:+13038742800" class="btn btn--ghost btn--lg">Or call 303.874.2800</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+
+      <div class="footer__brand">
+        <div class="brand">
+          <span class="brand__name brand__name--lg">Mercantile</span>
+          <span class="brand__tag">Dining &amp; Provision</span>
+        </div>
+        <p class="footer__tagline">
+          A Colorado table in Denver's Union Station, since twenty-fourteen.
+        </p>
+      </div>
+
+      <div class="footer__col">
+        <h4>Visit</h4>
+        <address>
+          1701 Wynkoop Street<br>
+          Suite 155<br>
+          Denver, Colorado 80202
+        </address>
+        <a href="https://maps.google.com" target="_blank" rel="noopener">Get Directions →</a>
+      </div>
+
+      <div class="footer__col">
+        <h4>Hours</h4>
+        <dl>
+          <dt>The Café</dt>
+          <dd>Daily · 7a – 3p</dd>
+          <dt>The Tasting Room</dt>
+          <dd>Tue – Sat · 5p – 10p</dd>
+          <dt>The Bar</dt>
+          <dd>Tue – Sat · 5p – 11p</dd>
+        </dl>
+      </div>
+
+      <div class="footer__col">
+        <h4>Stay in Touch</h4>
+        <p>A quiet letter when the menu turns with the season.</p>
+        <form class="footer__form" onsubmit="event.preventDefault(); this.querySelector('input').value=''; this.querySelector('input').placeholder='Thank you — check your inbox.';">
+          <input type="email" placeholder="your@email.com" required>
+          <button type="submit" aria-label="Subscribe">→</button>
+        </form>
+        <div class="footer__social">
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div>© 2026 Mercantile Dining &amp; Provision · A Sage Restaurant Concept</div>
+      <div class="footer__links">
+        <a href="#">Gift Cards</a>
+        <a href="#">Careers</a>
+        <a href="#">Press Inquiries</a>
+        <a href="#">Privacy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------- Fade-in on scroll ---------- */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+/* ---------- Mobile menu ---------- */
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobileMenu');
+const closeMenu = document.getElementById('closeMenu');
+burger.addEventListener('click', () => mobileMenu.classList.add('open'));
+closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
+mobileMenu.querySelectorAll('a').forEach((a) =>
+  a.addEventListener('click', () => mobileMenu.classList.remove('open'))
+);
+
+/* ---------- Dynamic "Open Today" status ---------- */
+(function updateStatus() {
+  const el = document.querySelector('.status');
+  if (!el) return;
+  const now = new Date();
+  const day = now.getDay(); // 0 = Sun
+  const hour = now.getHours();
+  let open = false;
+  let label = '';
+  // Café: daily 7a-3p
+  if (hour >= 7 && hour < 15) { open = true; label = 'Open Now · Café until 3P'; }
+  // Tasting Room: Tue-Sat 5p-10p
+  else if (day >= 2 && day <= 6 && hour >= 17 && hour < 22) { open = true; label = 'Open Now · Tasting Room'; }
+  else { label = 'Opening Tomorrow · 7A'; }
+  el.innerHTML = `<span class="dot" style="${open ? '' : 'background:#C4953A; box-shadow:0 0 0 3px rgba(196,149,58,0.2);'}"></span>${label}`;
+})();
+
+/* ---------- Gentle parallax on hero image ---------- */
+const heroImg = document.querySelector('.hero__image img');
+if (heroImg && window.matchMedia('(min-width: 900px)').matches) {
+  window.addEventListener('scroll', () => {
+    const y = Math.min(window.scrollY, 800);
+    heroImg.style.transform = `translate3d(0, ${y * 0.25}px, 0) scale(${1 + y * 0.0003})`;
+  }, { passive: true });
+}
+</script>
+
+</body>
+</html>
