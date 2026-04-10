@@ -1,0 +1,1862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tavernetta — Handmade Pasta & Italian Soul • Denver Union Station</title>
+<meta name="description" content="From the James Beard Award-winning team behind Frasca. Handmade pasta, Italian-directed wine list, and world-class hospitality in Denver's Union Station neighborhood." />
+
+<!-- Google Fonts: Cormorant Garamond (editorial display), Fraunces (modern serif), DM Sans (body), Caveat (script) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=DM+Sans:wght@300;400;500;600&family=Caveat:wght@400;600&display=swap" rel="stylesheet" />
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+<style>
+/* =========================================================
+   TAVERNETTA — "LA TAVOLA"
+   Design system: warm Italian trattoria, editorial, cinematic
+   ========================================================= */
+
+:root {
+  /* Palette — strictly no grey, no purple */
+  --espresso:      #2B1810;
+  --dark-oak:      #3D2817;
+  --burnt-sienna:  #6B3410;
+  --terracotta:    #C8472F;
+  --tuscan-gold:   #D4A574;
+  --aged-paper:    #EBDCC0;
+  --warm-cream:    #F5EFE6;
+  --bone:          #FBF7F0;
+  --wine:          #5A1E20;
+  --olive:         #7A7A42;
+
+  /* Typography */
+  --display: "Cormorant Garamond", Georgia, serif;
+  --serif:   "Fraunces", Georgia, serif;
+  --body:    "DM Sans", system-ui, sans-serif;
+  --script:  "Caveat", cursive;
+
+  /* Motion */
+  --ease: cubic-bezier(.2,.7,.2,1);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; -webkit-font-smoothing:antialiased; }
+body {
+  font-family: var(--body);
+  color: var(--dark-oak);
+  background: var(--warm-cream);
+  line-height: 1.6;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+img { max-width:100%; display:block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border:none; background:none; color: inherit; }
+
+/* Paper texture overlay everywhere */
+body::before {
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .35;
+  z-index: 1;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(107,52,16,.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(200,71,47,.03) 0%, transparent 50%);
+  mix-blend-mode: multiply;
+}
+body::after {
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .06;
+  z-index: 2;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+}
+
+/* =========================================================
+   NAV
+   ========================================================= */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 22px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background .4s var(--ease), padding .4s var(--ease), backdrop-filter .4s var(--ease);
+}
+.nav.scrolled {
+  background: rgba(43,24,16,.92);
+  backdrop-filter: blur(12px);
+  padding: 16px 48px;
+  box-shadow: 0 1px 0 rgba(212,165,116,.15);
+}
+.nav-logo {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 28px;
+  letter-spacing: .18em;
+  color: var(--bone);
+  text-transform: uppercase;
+}
+.nav-logo span { color: var(--terracotta); font-style: italic; font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 22px; }
+.nav-links {
+  display: flex;
+  gap: 42px;
+  align-items: center;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--bone);
+  font-size: 11px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  font-weight: 500;
+  position: relative;
+  transition: color .3s var(--ease);
+}
+.nav-links a::after {
+  content:"";
+  position: absolute;
+  left: 0; right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: var(--terracotta);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .4s var(--ease);
+}
+.nav-links a:hover { color: var(--tuscan-gold); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-cta {
+  background: var(--terracotta);
+  color: var(--bone);
+  padding: 13px 26px;
+  border-radius: 2px;
+  font-size: 11px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: all .3s var(--ease);
+  border: 1px solid var(--terracotta);
+}
+.nav-cta:hover {
+  background: transparent;
+  color: var(--terracotta);
+}
+.nav-toggle { display:none; color: var(--bone); font-size: 22px; }
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  color: var(--bone);
+  display: flex;
+  align-items: center;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url("https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=2000&q=85") center/cover;
+  z-index: 0;
+}
+.hero-bg::after {
+  content:"";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(100deg, rgba(43,24,16,.82) 0%, rgba(43,24,16,.55) 50%, rgba(43,24,16,.3) 100%),
+    linear-gradient(to bottom, rgba(43,24,16,.4), transparent 30%, transparent 60%, rgba(43,24,16,.6));
+}
+.hero-inner {
+  position: relative;
+  z-index: 3;
+  padding: 0 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+.beard-ribbon {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(251,247,240,.08);
+  border: 1px solid rgba(212,165,116,.4);
+  backdrop-filter: blur(8px);
+  padding: 12px 22px;
+  margin-bottom: 42px;
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--tuscan-gold);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s var(--ease) .3s forwards;
+}
+.beard-ribbon i { color: var(--terracotta); font-size: 14px; }
+.beard-ribbon strong { color: var(--bone); font-weight: 600; }
+
+.hero-title {
+  font-family: var(--display);
+  font-size: clamp(52px, 8.5vw, 130px);
+  line-height: .95;
+  font-weight: 400;
+  letter-spacing: -.02em;
+  max-width: 1000px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1.2s var(--ease) .5s forwards;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--terracotta);
+  font-weight: 500;
+}
+.hero-title .script {
+  display: block;
+  font-family: var(--script);
+  font-size: .4em;
+  color: var(--tuscan-gold);
+  font-weight: 400;
+  letter-spacing: .02em;
+  margin-bottom: 12px;
+  transform: rotate(-2deg);
+  transform-origin: left;
+}
+
+.hero-sub {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 300;
+  max-width: 520px;
+  margin: 38px 0 48px;
+  color: rgba(251,247,240,.88);
+  line-height: 1.7;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s var(--ease) .8s forwards;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s var(--ease) 1s forwards;
+}
+.btn-primary, .btn-ghost {
+  padding: 18px 38px;
+  font-size: 12px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: all .4s var(--ease);
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  border-radius: 2px;
+}
+.btn-primary {
+  background: var(--terracotta);
+  color: var(--bone);
+  border: 1px solid var(--terracotta);
+}
+.btn-primary:hover {
+  background: var(--bone);
+  color: var(--espresso);
+  border-color: var(--bone);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--bone);
+  border: 1px solid rgba(251,247,240,.4);
+}
+.btn-ghost:hover {
+  background: var(--bone);
+  color: var(--espresso);
+  border-color: var(--bone);
+}
+.btn-primary i, .btn-ghost i { font-size: 11px; transition: transform .3s var(--ease); }
+.btn-primary:hover i, .btn-ghost:hover i { transform: translateX(4px); }
+
+/* Hero bottom bar */
+.hero-bar {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 3;
+  padding: 24px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(212,165,116,.2);
+  background: linear-gradient(to top, rgba(43,24,16,.6), transparent);
+  font-size: 11px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(251,247,240,.75);
+}
+.hero-bar .pipe { color: var(--terracotta); margin: 0 14px; }
+.hero-bar i { color: var(--terracotta); margin-right: 8px; }
+.hero-bar .scroll-hint {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-bar .scroll-hint .line {
+  width: 40px; height: 1px;
+  background: var(--tuscan-gold);
+  position: relative;
+  overflow: hidden;
+}
+.hero-bar .scroll-hint .line::after {
+  content:"";
+  position: absolute;
+  inset: 0;
+  background: var(--bone);
+  transform: translateX(-100%);
+  animation: scrollLine 2.4s var(--ease) infinite;
+}
+@keyframes scrollLine {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================================
+   BENVENUTI — intro section
+   ========================================================= */
+.benvenuti {
+  padding: 140px 48px 120px;
+  position: relative;
+  z-index: 3;
+  background: var(--warm-cream);
+}
+.benvenuti-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 100px;
+  align-items: center;
+}
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--body);
+  font-size: 11px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+.section-eyebrow::before {
+  content:"";
+  width: 40px;
+  height: 1px;
+  background: var(--terracotta);
+}
+.benvenuti h2 {
+  font-family: var(--display);
+  font-size: clamp(44px, 5.5vw, 82px);
+  line-height: 1;
+  font-weight: 400;
+  color: var(--espresso);
+  margin-bottom: 32px;
+  letter-spacing: -.01em;
+}
+.benvenuti h2 em {
+  font-style: italic;
+  color: var(--terracotta);
+  display: block;
+}
+.benvenuti p {
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--dark-oak);
+  margin-bottom: 22px;
+  font-weight: 300;
+}
+.benvenuti .signature {
+  font-family: var(--script);
+  font-size: 34px;
+  color: var(--terracotta);
+  margin-top: 28px;
+  transform: rotate(-2deg);
+  display: inline-block;
+}
+.benvenuti-img {
+  position: relative;
+  aspect-ratio: 4/5;
+}
+.benvenuti-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2px;
+  filter: saturate(1.05) contrast(1.02);
+}
+.benvenuti-img::before {
+  content:"";
+  position: absolute;
+  inset: -18px -18px 18px 18px;
+  border: 1px solid var(--terracotta);
+  z-index: -1;
+}
+.benvenuti-img .caption {
+  position: absolute;
+  bottom: -30px;
+  left: 24px;
+  background: var(--espresso);
+  color: var(--bone);
+  padding: 14px 22px;
+  font-family: var(--script);
+  font-size: 20px;
+  letter-spacing: .02em;
+  box-shadow: 0 20px 40px rgba(43,24,16,.25);
+}
+
+/* =========================================================
+   SIGNATURE DISHES
+   ========================================================= */
+.dishes {
+  padding: 140px 48px;
+  background: var(--espresso);
+  color: var(--bone);
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+}
+.dishes::before {
+  content:"ALLA TAVOLA";
+  position: absolute;
+  top: 60px;
+  left: -40px;
+  font-family: var(--display);
+  font-size: 260px;
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(212,165,116,.06);
+  letter-spacing: -.04em;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.dishes-header {
+  max-width: 1300px;
+  margin: 0 auto 90px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+  position: relative;
+  z-index: 2;
+}
+.dishes-header h2 {
+  font-family: var(--display);
+  font-size: clamp(48px, 6vw, 92px);
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: -.01em;
+}
+.dishes-header h2 em {
+  font-style: italic;
+  color: var(--terracotta);
+}
+.dishes-header p {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(251,247,240,.75);
+  max-width: 440px;
+  line-height: 1.7;
+  justify-self: end;
+}
+.dish-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 32px;
+  position: relative;
+  z-index: 2;
+}
+.dish {
+  position: relative;
+  overflow: hidden;
+}
+.dish-img {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.dish-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease);
+}
+.dish:hover .dish-img img { transform: scale(1.06); }
+.dish-img::after {
+  content:"";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(43,24,16,.5), transparent 50%);
+  pointer-events: none;
+}
+.dish-num {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-family: var(--script);
+  color: var(--tuscan-gold);
+  font-size: 28px;
+  z-index: 2;
+  line-height: 1;
+}
+.dish-name {
+  font-family: var(--display);
+  font-size: 30px;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--bone);
+  margin-bottom: 6px;
+  line-height: 1.1;
+}
+.dish-desc {
+  font-family: var(--body);
+  font-size: 13px;
+  color: rgba(251,247,240,.65);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+.dish-price {
+  font-family: var(--serif);
+  font-size: 15px;
+  color: var(--terracotta);
+  letter-spacing: .05em;
+  font-weight: 500;
+}
+
+/* Dish grid positions — editorial irregular layout */
+.dish-1 { grid-column: 1 / span 5; }
+.dish-1 .dish-img { aspect-ratio: 4/5; }
+
+.dish-2 { grid-column: 6 / span 7; padding-top: 80px; }
+.dish-2 .dish-img { aspect-ratio: 16/10; }
+
+.dish-3 { grid-column: 1 / span 4; padding-top: 40px; }
+.dish-3 .dish-img { aspect-ratio: 3/4; }
+
+.dish-4 { grid-column: 5 / span 4; }
+.dish-4 .dish-img { aspect-ratio: 1/1; }
+
+.dish-5 { grid-column: 9 / span 4; padding-top: 60px; }
+.dish-5 .dish-img { aspect-ratio: 3/4; }
+
+.dishes-cta {
+  max-width: 1300px;
+  margin: 90px auto 0;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+.menu-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 36px;
+  color: var(--tuscan-gold);
+  border-bottom: 1px solid rgba(212,165,116,.3);
+  padding-bottom: 10px;
+  transition: all .4s var(--ease);
+}
+.menu-link:hover { color: var(--terracotta); border-color: var(--terracotta); transform: translateY(-2px); }
+.menu-link i { font-size: 22px; }
+
+/* =========================================================
+   JAMES BEARD / STORY SECTION
+   ========================================================= */
+.story {
+  padding: 160px 48px;
+  background: var(--warm-cream);
+  position: relative;
+  z-index: 3;
+}
+.story-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 90px;
+  align-items: center;
+}
+.story-visual {
+  position: relative;
+}
+.story-visual .main-img {
+  aspect-ratio: 5/6;
+  overflow: hidden;
+}
+.story-visual .main-img img { width: 100%; height: 100%; object-fit: cover; }
+.story-visual .overlay-img {
+  position: absolute;
+  bottom: -40px;
+  right: -40px;
+  width: 55%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  border: 8px solid var(--warm-cream);
+  box-shadow: -20px 20px 50px rgba(43,24,16,.2);
+}
+.story-visual .overlay-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.story-visual .badge {
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: var(--terracotta);
+  color: var(--bone);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: var(--display);
+  box-shadow: 0 20px 50px rgba(200,71,47,.35);
+  animation: slowSpin 30s linear infinite;
+}
+@keyframes slowSpin { to { transform: rotate(360deg); } }
+.story-visual .badge .inner {
+  animation: slowSpin 30s linear infinite reverse;
+}
+.story-visual .badge i {
+  font-size: 32px;
+  color: var(--tuscan-gold);
+  margin-bottom: 6px;
+  display: block;
+}
+.story-visual .badge strong {
+  font-size: 14px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: block;
+  line-height: 1.2;
+}
+.story-visual .badge span {
+  font-family: var(--script);
+  font-size: 16px;
+  color: var(--tuscan-gold);
+  display: block;
+  margin-top: 4px;
+}
+
+.story-text h2 {
+  font-family: var(--display);
+  font-size: clamp(42px, 5vw, 76px);
+  line-height: 1.02;
+  font-weight: 400;
+  color: var(--espresso);
+  margin-bottom: 32px;
+  letter-spacing: -.01em;
+}
+.story-text h2 em { font-style: italic; color: var(--terracotta); }
+.story-text p {
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--dark-oak);
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+.story-text .pull-quote {
+  border-left: 2px solid var(--terracotta);
+  padding: 8px 0 8px 28px;
+  margin: 32px 0;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 24px;
+  line-height: 1.4;
+  color: var(--burnt-sienna);
+}
+.story-text .pull-quote .attr {
+  display: block;
+  font-family: var(--body);
+  font-style: normal;
+  font-size: 12px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-top: 14px;
+  font-weight: 600;
+}
+
+/* =========================================================
+   THE SPACE / GALLERY
+   ========================================================= */
+.space {
+  padding: 140px 0 140px;
+  background: var(--aged-paper);
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+}
+.space-header {
+  max-width: 1300px;
+  margin: 0 auto 80px;
+  padding: 0 48px;
+  text-align: center;
+}
+.space-header h2 {
+  font-family: var(--display);
+  font-size: clamp(44px, 5.5vw, 82px);
+  line-height: 1;
+  font-weight: 400;
+  color: var(--espresso);
+  letter-spacing: -.01em;
+}
+.space-header h2 em { font-style: italic; color: var(--terracotta); }
+.space-header p {
+  font-family: var(--serif);
+  font-size: 17px;
+  color: var(--dark-oak);
+  max-width: 540px;
+  margin: 22px auto 0;
+  font-weight: 300;
+  line-height: 1.75;
+}
+.space-header .eyebrow-center {
+  justify-content: center;
+  display: inline-flex;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 120px;
+  gap: 16px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+.gallery-item {
+  overflow: hidden;
+  position: relative;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease);
+}
+.gallery-item:hover img { transform: scale(1.08); }
+.g1 { grid-column: 1 / span 5; grid-row: span 3; }
+.g2 { grid-column: 6 / span 4; grid-row: span 2; }
+.g3 { grid-column: 10 / span 3; grid-row: span 3; }
+.g4 { grid-column: 6 / span 4; grid-row: span 2; }
+.g5 { grid-column: 1 / span 4; grid-row: span 2; }
+.g6 { grid-column: 5 / span 5; grid-row: span 2; }
+.g7 { grid-column: 10 / span 3; grid-row: span 2; }
+
+.gallery-item .caption-tag {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  background: rgba(43,24,16,.85);
+  backdrop-filter: blur(6px);
+  color: var(--bone);
+  padding: 8px 14px;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: .02em;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all .4s var(--ease);
+}
+.gallery-item:hover .caption-tag { opacity: 1; transform: translateY(0); }
+
+/* =========================================================
+   WINE PROGRAM
+   ========================================================= */
+.wine {
+  padding: 160px 48px;
+  background: var(--wine);
+  color: var(--bone);
+  position: relative;
+  overflow: hidden;
+  z-index: 3;
+}
+.wine::before {
+  content:"";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 80% 20%, rgba(200,71,47,.25), transparent 60%);
+  pointer-events: none;
+}
+.wine-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 90px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.wine-text .section-eyebrow { color: var(--tuscan-gold); }
+.wine-text .section-eyebrow::before { background: var(--tuscan-gold); }
+.wine-text h2 {
+  font-family: var(--display);
+  font-size: clamp(44px, 5.5vw, 82px);
+  line-height: 1;
+  font-weight: 400;
+  margin-bottom: 32px;
+  letter-spacing: -.01em;
+}
+.wine-text h2 em { font-style: italic; color: var(--tuscan-gold); }
+.wine-text p {
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.8;
+  color: rgba(251,247,240,.82);
+  font-weight: 300;
+  margin-bottom: 22px;
+}
+.wine-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 48px;
+  padding-top: 42px;
+  border-top: 1px solid rgba(212,165,116,.25);
+}
+.wine-stats .stat .num {
+  font-family: var(--display);
+  font-size: 52px;
+  font-weight: 500;
+  color: var(--tuscan-gold);
+  line-height: 1;
+  display: block;
+}
+.wine-stats .stat .label {
+  font-family: var(--body);
+  font-size: 11px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(251,247,240,.6);
+  margin-top: 10px;
+  display: block;
+  line-height: 1.5;
+}
+.wine-visual {
+  position: relative;
+  aspect-ratio: 3/4;
+}
+.wine-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(.95);
+}
+.wine-visual::before {
+  content:"";
+  position: absolute;
+  inset: 20px -20px -20px 20px;
+  border: 1px solid var(--tuscan-gold);
+  z-index: -1;
+}
+
+/* =========================================================
+   RESERVE / HOURS SECTION
+   ========================================================= */
+.reserve {
+  padding: 160px 48px;
+  background: var(--warm-cream);
+  position: relative;
+  z-index: 3;
+}
+.reserve-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 100px;
+  align-items: start;
+}
+.reserve-text h2 {
+  font-family: var(--display);
+  font-size: clamp(48px, 6vw, 92px);
+  line-height: .98;
+  font-weight: 400;
+  color: var(--espresso);
+  margin-bottom: 36px;
+  letter-spacing: -.01em;
+}
+.reserve-text h2 em { font-style: italic; color: var(--terracotta); }
+.reserve-text p {
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--dark-oak);
+  font-weight: 300;
+  margin-bottom: 32px;
+  max-width: 500px;
+}
+.reserve-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--terracotta);
+  color: var(--bone);
+  padding: 22px 44px;
+  font-size: 12px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border: 1px solid var(--terracotta);
+  transition: all .4s var(--ease);
+}
+.reserve-cta:hover {
+  background: var(--espresso);
+  border-color: var(--espresso);
+}
+.reserve-cta i { font-size: 14px; }
+.reserve-phone {
+  margin-top: 32px;
+  font-family: var(--display);
+  font-size: 22px;
+  color: var(--burnt-sienna);
+  font-style: italic;
+}
+.reserve-phone a {
+  color: var(--terracotta);
+  font-weight: 500;
+  border-bottom: 1px solid var(--terracotta);
+  margin-left: 8px;
+}
+
+.hours-card {
+  background: var(--bone);
+  padding: 48px;
+  border: 1px solid rgba(107,52,16,.12);
+  position: relative;
+}
+.hours-card::before {
+  content:"";
+  position: absolute;
+  top: 14px; left: 14px; right: 14px; bottom: 14px;
+  border: 1px solid rgba(200,71,47,.25);
+  pointer-events: none;
+}
+.hours-card h3 {
+  font-family: var(--display);
+  font-size: 36px;
+  font-style: italic;
+  color: var(--espresso);
+  margin-bottom: 8px;
+  text-align: center;
+}
+.hours-card .divider {
+  width: 60px;
+  height: 1px;
+  background: var(--terracotta);
+  margin: 16px auto 28px;
+}
+.hours-group {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(107,52,16,.1);
+}
+.hours-group:last-of-type { border-bottom: none; }
+.hours-group .label {
+  font-family: var(--body);
+  font-size: 10px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 10px;
+}
+.hours-group .row {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--serif);
+  font-size: 15px;
+  color: var(--dark-oak);
+  padding: 4px 0;
+}
+.hours-group .row span:last-child { color: var(--burnt-sienna); font-weight: 500; }
+
+/* =========================================================
+   LOCATION / MAP
+   ========================================================= */
+.location {
+  padding: 140px 48px;
+  background: var(--espresso);
+  color: var(--bone);
+  position: relative;
+  z-index: 3;
+}
+.location-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 80px;
+  align-items: center;
+}
+.location-text h2 {
+  font-family: var(--display);
+  font-size: clamp(42px, 5vw, 74px);
+  line-height: 1;
+  font-weight: 400;
+  margin-bottom: 30px;
+  letter-spacing: -.01em;
+}
+.location-text h2 em { font-style: italic; color: var(--terracotta); }
+.location-text p {
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.75;
+  color: rgba(251,247,240,.75);
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+.location-info {
+  margin: 32px 0;
+}
+.info-row {
+  display: flex;
+  gap: 18px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(212,165,116,.15);
+  align-items: start;
+}
+.info-row i {
+  color: var(--terracotta);
+  font-size: 16px;
+  width: 24px;
+  margin-top: 4px;
+}
+.info-row .content .lbl {
+  font-family: var(--body);
+  font-size: 10px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--tuscan-gold);
+  margin-bottom: 4px;
+  display: block;
+  font-weight: 600;
+}
+.info-row .content .val {
+  font-family: var(--display);
+  font-size: 20px;
+  font-style: italic;
+  color: var(--bone);
+}
+
+.location-visual {
+  position: relative;
+  aspect-ratio: 5/4;
+}
+.location-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.05);
+}
+.location-visual::after {
+  content:"UNION STATION · DENVER";
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  font-family: var(--body);
+  font-size: 10px;
+  letter-spacing: .3em;
+  color: var(--bone);
+  background: rgba(43,24,16,.9);
+  padding: 10px 16px;
+}
+.location-visual::before {
+  content:"";
+  position: absolute;
+  inset: -20px 20px 20px -20px;
+  border: 1px solid var(--terracotta);
+  z-index: -1;
+}
+
+/* =========================================================
+   SISTERS
+   ========================================================= */
+.sisters {
+  padding: 120px 48px;
+  background: var(--aged-paper);
+  position: relative;
+  z-index: 3;
+  text-align: center;
+}
+.sisters h3 {
+  font-family: var(--display);
+  font-size: 40px;
+  font-style: italic;
+  color: var(--espresso);
+  font-weight: 400;
+  margin-bottom: 14px;
+}
+.sisters .sub {
+  font-family: var(--body);
+  font-size: 11px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 60px;
+  font-weight: 600;
+}
+.sisters-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+.sister {
+  padding: 42px 28px;
+  background: var(--warm-cream);
+  border: 1px solid rgba(107,52,16,.12);
+  transition: all .4s var(--ease);
+  cursor: pointer;
+}
+.sister:hover {
+  transform: translateY(-6px);
+  border-color: var(--terracotta);
+  box-shadow: 0 20px 50px rgba(43,24,16,.12);
+}
+.sister h4 {
+  font-family: var(--display);
+  font-size: 26px;
+  font-style: italic;
+  color: var(--espresso);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.sister .loc {
+  font-family: var(--body);
+  font-size: 10px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  font-weight: 600;
+}
+.sister .desc {
+  font-family: var(--serif);
+  font-size: 13px;
+  color: var(--dark-oak);
+  margin-top: 14px;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+footer {
+  background: var(--espresso);
+  color: var(--bone);
+  padding: 100px 48px 40px;
+  position: relative;
+  z-index: 3;
+}
+.footer-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.2fr;
+  gap: 60px;
+  padding-bottom: 70px;
+  border-bottom: 1px solid rgba(212,165,116,.15);
+}
+.footer-brand .logo {
+  font-family: var(--display);
+  font-size: 42px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.footer-brand .tag {
+  font-family: var(--script);
+  font-size: 24px;
+  color: var(--terracotta);
+  margin-bottom: 24px;
+}
+.footer-brand p {
+  font-family: var(--serif);
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(251,247,240,.68);
+  font-weight: 300;
+  max-width: 340px;
+}
+.footer-col h5 {
+  font-family: var(--body);
+  font-size: 11px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--tuscan-gold);
+  margin-bottom: 22px;
+  font-weight: 600;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 12px; }
+.footer-col a {
+  font-family: var(--serif);
+  font-size: 15px;
+  color: rgba(251,247,240,.75);
+  transition: color .3s var(--ease);
+  font-weight: 300;
+}
+.footer-col a:hover { color: var(--terracotta); }
+
+.newsletter p {
+  font-family: var(--serif);
+  font-size: 14px;
+  color: rgba(251,247,240,.68);
+  margin-bottom: 18px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+.newsletter form {
+  display: flex;
+  border: 1px solid rgba(212,165,116,.3);
+}
+.newsletter input {
+  flex: 1;
+  padding: 14px 16px;
+  background: transparent;
+  border: none;
+  color: var(--bone);
+  font-family: var(--body);
+  font-size: 13px;
+  outline: none;
+}
+.newsletter input::placeholder { color: rgba(251,247,240,.4); }
+.newsletter button {
+  padding: 0 22px;
+  background: var(--terracotta);
+  color: var(--bone);
+  font-size: 11px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: background .3s var(--ease);
+}
+.newsletter button:hover { background: var(--burnt-sienna); }
+
+.social {
+  display: flex;
+  gap: 14px;
+  margin-top: 24px;
+}
+.social a {
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(212,165,116,.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  transition: all .3s var(--ease);
+}
+.social a:hover { background: var(--terracotta); border-color: var(--terracotta); transform: translateY(-3px); }
+
+.footer-bottom {
+  max-width: 1300px;
+  margin: 40px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--body);
+  font-size: 11px;
+  color: rgba(251,247,240,.4);
+  letter-spacing: .08em;
+}
+.footer-bottom em { color: var(--terracotta); font-style: italic; font-family: var(--display); font-size: 14px; }
+
+/* =========================================================
+   SCROLL REVEAL
+   ========================================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s var(--ease), transform 1s var(--ease);
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 1100px) {
+  .benvenuti-inner, .story-inner, .wine-inner, .reserve-inner, .location-inner {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  .dishes-header { grid-template-columns: 1fr; gap: 30px; }
+  .dishes-header p { justify-self: start; }
+  .dish-grid { grid-template-columns: repeat(6, 1fr); }
+  .dish-1 { grid-column: 1 / span 6; }
+  .dish-2 { grid-column: 1 / span 6; padding-top: 0; }
+  .dish-3 { grid-column: 1 / span 3; padding-top: 0; }
+  .dish-4 { grid-column: 4 / span 3; }
+  .dish-5 { grid-column: 1 / span 6; padding-top: 0; }
+  .sisters-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 50px; }
+  .gallery { grid-auto-rows: 100px; }
+}
+
+@media (max-width: 768px) {
+  .nav { padding: 18px 22px; }
+  .nav.scrolled { padding: 14px 22px; }
+  .nav-links { display: none; }
+  .nav-toggle { display: block; }
+  .nav-cta { display: none; }
+  .hero-inner { padding: 0 22px; }
+  .hero-bar { padding: 18px 22px; flex-direction: column; gap: 10px; text-align: center; }
+  .hero-bar .scroll-hint { display: none; }
+  .benvenuti, .dishes, .story, .wine, .reserve, .location, .sisters { padding: 90px 22px; }
+  .space-header, .gallery { padding: 0 22px; }
+  .gallery { grid-template-columns: repeat(6, 1fr); gap: 10px; grid-auto-rows: 80px; }
+  .g1 { grid-column: 1 / span 6; grid-row: span 3; }
+  .g2, .g3, .g4, .g5, .g6, .g7 { grid-column: 1 / span 6; grid-row: span 2; }
+  .story-visual .badge { width: 120px; height: 120px; top: -15px; left: -15px; }
+  .story-visual .badge i { font-size: 22px; }
+  .story-visual .badge strong { font-size: 10px; }
+  .dishes-header h2, .benvenuti h2, .story-text h2, .wine-text h2, .reserve-text h2, .location-text h2 { font-size: 44px; }
+  .dishes::before { font-size: 120px; }
+  .wine-stats { grid-template-columns: 1fr; gap: 20px; }
+  .sisters-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; padding-bottom: 50px; }
+  .footer-bottom { flex-direction: column; gap: 10px; }
+  footer { padding: 70px 22px 30px; }
+  .hours-card { padding: 30px 24px; }
+  .hero-ctas { gap: 12px; }
+  .btn-primary, .btn-ghost { padding: 15px 26px; font-size: 11px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     NAVIGATION
+     ========================================================= -->
+<nav class="nav" id="nav">
+  <a href="#top" class="nav-logo">Tavernetta <span>· dnv</span></a>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#story">Story</a></li>
+    <li><a href="#space">The Space</a></li>
+    <li><a href="#wine">Wine</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+  <a href="#reserve" class="nav-cta">Reserve <i class="fas fa-arrow-right"></i></a>
+  <button class="nav-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+</nav>
+
+<!-- =========================================================
+     HERO
+     ========================================================= -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="beard-ribbon">
+      <i class="fas fa-award"></i>
+      <span>From the <strong>James Beard Award</strong>-winning team behind Frasca</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="script">Benvenuti a —</span>
+      Handmade pasta,<br/>
+      <em>Italian soul,</em><br/>
+      Denver table.
+    </h1>
+    <p class="hero-sub">
+      Inspired by the food, wine and culture of Italy, Tavernetta brings la dolce vita style to Denver's Union Station — fresh pasta rolled by hand every morning, an Italian-directed wine list, and the kind of hospitality that lingers long after the espresso.
+    </p>
+    <div class="hero-ctas">
+      <a href="#reserve" class="btn-primary">Reserve a Table <i class="fas fa-arrow-right"></i></a>
+      <a href="#menu" class="btn-ghost">View the Menu <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <div>
+      <i class="fas fa-map-marker-alt"></i> 1889 Sixteenth Street
+      <span class="pipe">•</span>
+      <i class="fas fa-clock"></i> Open Today 11:30 — 10:00
+      <span class="pipe">•</span>
+      <i class="fas fa-phone"></i> 720.605.1889
+    </div>
+    <div class="scroll-hint">
+      Scroll <span class="line"></span>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     BENVENUTI — INTRODUCTION
+     ========================================================= -->
+<section class="benvenuti">
+  <div class="benvenuti-inner">
+    <div class="reveal">
+      <span class="section-eyebrow">Benvenuti</span>
+      <h2>A Roman table<br/><em>in the heart<br/>of Denver.</em></h2>
+      <p>
+        Step through our doors and the world narrows to the scrape of a chair, the pop of a cork, the drift of pancetta and sage from the open kitchen. This is Tavernetta — an Italian neighborhood trattoria re-imagined beneath the vaulted bones of Union Station.
+      </p>
+      <p>
+        Our pasta is rolled before the sun crosses the platform. Our wine list travels from Alto Adige to Sicilia and stops to visit old friends along the way. Our hospitality is the kind your nonna would recognize — unhurried, generous, genuine.
+      </p>
+      <span class="signature">— the Tavernetta famiglia</span>
+    </div>
+    <div class="benvenuti-img reveal">
+      <img src="https://images.unsplash.com/photo-1587740908075-9e245070dfaa?w=1200&q=85" alt="Hands rolling fresh pasta on a wooden table" />
+      <div class="caption">fatto a mano · ogni mattina</div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     SIGNATURE DISHES
+     ========================================================= -->
+<section class="dishes" id="menu">
+  <div class="dishes-header">
+    <div class="reveal">
+      <span class="section-eyebrow">Alla Tavola</span>
+      <h2>Signature<br/><em>plates.</em></h2>
+    </div>
+    <p class="reveal">
+      Every dish begins with a technique and an ingredient — semolina milled in Gragnano, tomato canned in Campania, olive oil pressed in Umbria. What ends up on your plate is Italy, faithfully translated.
+    </p>
+  </div>
+
+  <div class="dish-grid">
+    <!-- Dish 1 -->
+    <div class="dish dish-1 reveal">
+      <div class="dish-img">
+        <span class="dish-num">nº 01</span>
+        <img src="https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=1000&q=85" alt="Cacio e Pepe" />
+      </div>
+      <h3 class="dish-name">Cacio e Pepe</h3>
+      <p class="dish-desc">Hand-rolled tonnarelli, aged pecorino romano, cracked Tellicherry pepper. Roman simplicity, uncompromised.</p>
+      <div class="dish-price">— 24</div>
+    </div>
+
+    <!-- Dish 2 -->
+    <div class="dish dish-2 reveal">
+      <div class="dish-img">
+        <span class="dish-num">nº 02</span>
+        <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=1400&q=85" alt="Tagliatelle al Ragù" />
+      </div>
+      <h3 class="dish-name">Tagliatelle al Ragù</h3>
+      <p class="dish-desc">Wide egg tagliatelle folded through an eight-hour Bolognese of short rib, pancetta and soffritto, finished with Parmigiano-Reggiano 24 mesi.</p>
+      <div class="dish-price">— 32</div>
+    </div>
+
+    <!-- Dish 3 -->
+    <div class="dish dish-3 reveal">
+      <div class="dish-img">
+        <span class="dish-num">nº 03</span>
+        <img src="https://images.unsplash.com/photo-1572441713132-51c75654db73?w=900&q=85" alt="Osso Buco" />
+      </div>
+      <h3 class="dish-name">Osso Buco</h3>
+      <p class="dish-desc">Milanese braised veal shank, saffron risotto, gremolata.</p>
+      <div class="dish-price">— 58</div>
+    </div>
+
+    <!-- Dish 4 -->
+    <div class="dish dish-4 reveal">
+      <div class="dish-img">
+        <span class="dish-num">nº 04</span>
+        <img src="https://images.unsplash.com/photo-1579684947550-22e945225d9a?w=900&q=85" alt="Burrata Primavera" />
+      </div>
+      <h3 class="dish-name">Burrata Primavera</h3>
+      <p class="dish-desc">Puglian burrata, marinated heirlooms, aged balsamico, torn basil.</p>
+      <div class="dish-price">— 21</div>
+    </div>
+
+    <!-- Dish 5 -->
+    <div class="dish dish-5 reveal">
+      <div class="dish-img">
+        <span class="dish-num">nº 05</span>
+        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=900&q=85" alt="Tiramisu" />
+      </div>
+      <h3 class="dish-name">Tiramisù della Casa</h3>
+      <p class="dish-desc">Espresso-soaked savoiardi, mascarpone, Marsala, dark Valrhona. The reason you came.</p>
+      <div class="dish-price">— 14</div>
+    </div>
+  </div>
+
+  <div class="dishes-cta reveal">
+    <a href="#" class="menu-link">View the full menu <i class="fas fa-arrow-right"></i></a>
+  </div>
+</section>
+
+<!-- =========================================================
+     STORY / JAMES BEARD
+     ========================================================= -->
+<section class="story" id="story">
+  <div class="story-inner">
+    <div class="story-visual reveal">
+      <div class="main-img">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=85" alt="Chef in the kitchen" />
+      </div>
+      <div class="overlay-img">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=85" alt="Fresh pasta plating" />
+      </div>
+      <div class="badge">
+        <div class="inner">
+          <i class="fas fa-award"></i>
+          <strong>James Beard<br/>Winner</strong>
+          <span>est. famiglia</span>
+        </div>
+      </div>
+    </div>
+    <div class="story-text reveal">
+      <span class="section-eyebrow">La Famiglia</span>
+      <h2>A legacy of <em>Italian hospitality.</em></h2>
+      <p>
+        Tavernetta is brought to you by the James Beard Award-winning team behind Frasca Food & Wine — stewards of Italian cuisine in Colorado for more than two decades, and champions of the quiet excellence that defines a great trattoria.
+      </p>
+      <p>
+        Our philosophy is stubborn and simple: find the producer who cares the most, pay them fairly, and let the ingredient lead. Then pair it with a wine that has something to say.
+      </p>
+      <div class="pull-quote">
+        "Tavernetta isn't trying to impress you — it's trying to feed you the way someone's grandmother would, if her grandmother happened to live in Trastevere."
+        <span class="attr">— Westword · Denver's Best Italian</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     THE SPACE — GALLERY
+     ========================================================= -->
+<section class="space" id="space">
+  <div class="space-header reveal">
+    <span class="section-eyebrow eyebrow-center">Il Locale</span>
+    <h2>The space<br/><em>beneath the arches.</em></h2>
+    <p>Warm walnut, candlelight, an open kitchen humming in the middle distance, and the steady pulse of Union Station just beyond the glass. Designed to feel like somewhere your favorite story once happened.</p>
+  </div>
+  <div class="gallery">
+    <div class="gallery-item g1 reveal">
+      <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=85" alt="Dining room candlelit" />
+      <span class="caption-tag">la sala principale</span>
+    </div>
+    <div class="gallery-item g2 reveal">
+      <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=1000&q=85" alt="Wine wall" />
+      <span class="caption-tag">la cantina</span>
+    </div>
+    <div class="gallery-item g3 reveal">
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=85" alt="Chef plating" />
+      <span class="caption-tag">la cucina</span>
+    </div>
+    <div class="gallery-item g4 reveal">
+      <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1000&q=85" alt="Bar" />
+      <span class="caption-tag">il bar</span>
+    </div>
+    <div class="gallery-item g5 reveal">
+      <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=900&q=85" alt="Pasta plated" />
+      <span class="caption-tag">la pasta</span>
+    </div>
+    <div class="gallery-item g6 reveal">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=85" alt="Private dining" />
+      <span class="caption-tag">sala privata</span>
+    </div>
+    <div class="gallery-item g7 reveal">
+      <img src="https://images.unsplash.com/photo-1470162656305-6f429ba817bf?w=800&q=85" alt="Espresso" />
+      <span class="caption-tag">un caffè</span>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     WINE PROGRAM
+     ========================================================= -->
+<section class="wine" id="wine">
+  <div class="wine-inner">
+    <div class="wine-text reveal">
+      <span class="section-eyebrow">La Cantina</span>
+      <h2>A wine list<br/>that speaks <em>Italian</em>.</h2>
+      <p>
+        Curated by the same team behind Frasca's award-winning cellar, our list is a love letter to the Italian peninsula — deep verticals from Piemonte, rare bottles from Alto Adige, and a growing roster of natural producers from Etna and the Aeolian islands.
+      </p>
+      <p>
+        Our sommeliers live for the pairing you'd never have ordered yourself. Ask for their current obsession.
+      </p>
+      <div class="wine-stats">
+        <div class="stat">
+          <span class="num">600+</span>
+          <span class="label">Italian Selections</span>
+        </div>
+        <div class="stat">
+          <span class="num">20</span>
+          <span class="label">Regions Represented</span>
+        </div>
+        <div class="stat">
+          <span class="num">42</span>
+          <span class="label">By the Glass</span>
+        </div>
+      </div>
+    </div>
+    <div class="wine-visual reveal">
+      <img src="https://images.unsplash.com/photo-1474722883778-792e7990302f?w=1000&q=85" alt="Wine cellar with Italian bottles" />
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     RESERVE / HOURS
+     ========================================================= -->
+<section class="reserve" id="reserve">
+  <div class="reserve-inner">
+    <div class="reserve-text reveal">
+      <span class="section-eyebrow">Prenota</span>
+      <h2>Join us at<br/>the <em>table.</em></h2>
+      <p>
+        Reservations open 30 days in advance. For parties larger than six, private dining, or a wine-paired chef's counter experience, call us directly — we'd love to host you.
+      </p>
+      <a href="#" class="reserve-cta">Reserve on OpenTable <i class="fas fa-arrow-right"></i></a>
+      <div class="reserve-phone">
+        Or call us — <a href="tel:+17206051889">720.605.1889</a>
+      </div>
+    </div>
+
+    <div class="hours-card reveal">
+      <h3>Orari</h3>
+      <div class="divider"></div>
+
+      <div class="hours-group">
+        <span class="label">Pranzo · Lunch</span>
+        <div class="row"><span>Monday — Friday</span><span>11:30 — 2:00</span></div>
+      </div>
+
+      <div class="hours-group">
+        <span class="label">Aperitivo · Happy Hour</span>
+        <div class="row"><span>Every Day</span><span>3:00 — 6:00</span></div>
+      </div>
+
+      <div class="hours-group">
+        <span class="label">Cena · Dinner</span>
+        <div class="row"><span>Monday — Friday</span><span>5:00 — 10:00</span></div>
+        <div class="row"><span>Saturday — Sunday</span><span>3:00 — 10:00</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     LOCATION
+     ========================================================= -->
+<section class="location" id="visit">
+  <div class="location-inner">
+    <div class="location-text reveal">
+      <span class="section-eyebrow">Dove Siamo</span>
+      <h2>Beneath Denver's<br/>most <em>iconic</em><br/>skyline.</h2>
+      <p>
+        Tucked into the ground floor of the Crawford Hotel, steps from Denver Union Station's Great Hall. Walk out our door and you're in the center of LoDo's restaurant row — or a short stroll from Coors Field and the Pepsi Center.
+      </p>
+      <div class="location-info">
+        <div class="info-row">
+          <i class="fas fa-map-marker-alt"></i>
+          <div class="content">
+            <span class="lbl">Address</span>
+            <span class="val">1889 Sixteenth Street, Denver CO 80202</span>
+          </div>
+        </div>
+        <div class="info-row">
+          <i class="fas fa-phone"></i>
+          <div class="content">
+            <span class="lbl">Reservations</span>
+            <span class="val">720.605.1889</span>
+          </div>
+        </div>
+        <div class="info-row">
+          <i class="fas fa-car"></i>
+          <div class="content">
+            <span class="lbl">Parking</span>
+            <span class="val">Valet at the Crawford Hotel</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="location-visual reveal">
+      <img src="https://images.unsplash.com/photo-1545127398-14699f92334b?w=1400&q=85" alt="Denver Union Station at dusk" />
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     SISTER RESTAURANTS
+     ========================================================= -->
+<section class="sisters">
+  <h3 class="reveal">La Famiglia Frasca</h3>
+  <div class="sub reveal">Sister Restaurants</div>
+  <div class="sisters-grid">
+    <div class="sister reveal">
+      <h4>Frasca</h4>
+      <div class="loc">Boulder · CO</div>
+      <p class="desc">Our flagship. The Friulian tasting room that started it all.</p>
+    </div>
+    <div class="sister reveal">
+      <h4>Pizzeria Alberico</h4>
+      <div class="loc">Boulder · CO</div>
+      <p class="desc">Neapolitan pies, cold tap Negronis, no reservations.</p>
+    </div>
+    <div class="sister reveal">
+      <h4>Osteria Alberico</h4>
+      <div class="loc">Boulder · CO</div>
+      <p class="desc">A neighborhood osteria. Pasta, wine, and nothing unnecessary.</p>
+    </div>
+    <div class="sister reveal">
+      <h4>Tavernetta</h4>
+      <div class="loc">Vail · CO</div>
+      <p class="desc">Our alpine little sister. Handmade pasta above 8,000 feet.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">Tavernetta</div>
+      <div class="tag">— a Denver trattoria</div>
+      <p>Handmade pasta, Italian-directed wine, and world-class hospitality in the heart of Denver's Union Station neighborhood. Brought to you by the James Beard Award-winning Frasca Hospitality Group.</p>
+      <div class="social">
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+        <a href="#" aria-label="OpenTable"><i class="fas fa-utensils"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Explore</h5>
+      <ul>
+        <li><a href="#menu">The Menu</a></li>
+        <li><a href="#wine">Wine List</a></li>
+        <li><a href="#space">The Space</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#">Private Events</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Visit</h5>
+      <ul>
+        <li><a href="#visit">Directions</a></li>
+        <li><a href="#reserve">Reservations</a></li>
+        <li><a href="#reserve">Hours</a></li>
+        <li><a href="tel:+17206051889">720.605.1889</a></li>
+        <li><a href="#">Gift Cards</a></li>
+      </ul>
+    </div>
+    <div class="footer-col newsletter">
+      <h5>La Lettera</h5>
+      <p>Seasonal menus, rare wine arrivals, chef's counter invitations. Never spam.</p>
+      <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='Grazie!'">
+        <input type="email" placeholder="your@email.com" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Tavernetta · 1889 Sixteenth St, Denver CO 80202</div>
+    <div><em>Salute</em> · made with care in Colorado</div>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   Interactive behavior
+   ========================================================= */
+
+// Nav scroll state
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+// Scroll-triggered reveal
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      // Staggered reveal for siblings
+      setTimeout(() => e.target.classList.add('in'), i * 60);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Smooth scroll (fallback for browsers)
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href.length > 1) {
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  });
+});
+
+// Simple mobile nav toggle (basic UX)
+const toggle = document.querySelector('.nav-toggle');
+const links = document.querySelector('.nav-links');
+if (toggle) {
+  toggle.addEventListener('click', () => {
+    if (links.style.display === 'flex') {
+      links.style.display = '';
+    } else {
+      links.style.display = 'flex';
+      links.style.position = 'absolute';
+      links.style.top = '100%';
+      links.style.left = '0';
+      links.style.right = '0';
+      links.style.background = 'rgba(43,24,16,.97)';
+      links.style.flexDirection = 'column';
+      links.style.padding = '28px';
+      links.style.gap = '24px';
+      links.style.borderTop = '1px solid rgba(212,165,116,.2)';
+    }
+  });
+}
+</script>
+</body>
+</html>
