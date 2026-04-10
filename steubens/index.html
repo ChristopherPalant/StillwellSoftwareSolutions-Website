@@ -1,0 +1,1445 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Steuben's — A Real Diner. Uptown Denver, Since 2006.</title>
+<meta name="description" content="Steuben's is Denver's neighborhood diner in Uptown. Home of the best green chile cheeseburger, Nashville hot fried chicken, Maine lobster roll, and the legendary Monte Cristo. Named after a 1945 Boston supper club. Reserve, order, or book the truck." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Manrope:wght@300;400;500;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+<style>
+:root {
+  --teal: #1F5968;
+  --teal-deep: #143A44;
+  --teal-ink: #0C262D;
+  --cream: #F6F0E0;
+  --cream-warm: #EDE4CC;
+  --cream-soft: #FBF7EA;
+  --coral: #E85A3C;
+  --coral-dark: #C64024;
+  --butter: #F4C67A;
+  --ink: #141311;
+  --ink-soft: #2C2924;
+  --muted: #6B6458;
+  --line: rgba(20, 19, 17, 0.12);
+
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --body: "Manrope", system-ui, sans-serif;
+  --script: "Caveat", "Brush Script MT", cursive;
+
+  --maxw: 1360px;
+  --gutter: clamp(20px, 4vw, 56px);
+  --radius: 4px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--body);
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.55;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+/* --- Grain overlay for warmth --- */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.045;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* --- Typography utilities --- */
+.eyebrow {
+  font-family: var(--body);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--coral);
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.eyebrow::before, .eyebrow::after {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  display: inline-block;
+}
+.eyebrow.single::before { display: none; }
+.eyebrow.single::after { display: none; }
+
+.script {
+  font-family: var(--script);
+  font-weight: 600;
+  font-style: normal;
+  color: var(--coral);
+}
+
+h1, h2, h3, h4 { font-family: var(--display); font-weight: 500; line-height: 0.95; letter-spacing: -0.02em; font-variation-settings: "SOFT" 30, "opsz" 144; }
+
+/* ================================ NAV ================================ */
+.nav-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--cream);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+}
+.nav {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 18px var(--gutter);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+  color: var(--teal-deep);
+}
+.brand .brand-star {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: var(--coral);
+  transform: rotate(45deg);
+  margin-right: 2px;
+}
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 34px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  position: relative;
+  padding: 6px 0;
+  transition: color 0.2s;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--coral);
+  transition: all 0.25s ease;
+  transform: translateX(-50%);
+}
+.nav-links a:hover { color: var(--coral); }
+.nav-links a:hover::after { width: 100%; }
+.nav-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  align-items: center;
+}
+.nav-phone {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-phone i { color: var(--coral); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 24px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  border: 1.5px solid transparent;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--coral);
+  color: var(--cream-soft);
+  border-color: var(--coral);
+}
+.btn-primary:hover { background: var(--coral-dark); border-color: var(--coral-dark); transform: translateY(-1px); }
+.btn-outline {
+  background: transparent;
+  color: var(--cream);
+  border-color: rgba(246, 240, 224, 0.45);
+}
+.btn-outline:hover { background: var(--cream); color: var(--teal-deep); border-color: var(--cream); }
+.btn-ink {
+  background: var(--ink);
+  color: var(--cream-soft);
+  border-color: var(--ink);
+}
+.btn-ink:hover { background: var(--coral); border-color: var(--coral); }
+
+.menu-toggle { display: none; }
+
+/* ================================ HERO ================================ */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  background: var(--teal-ink);
+  color: var(--cream);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=2200&q=80&auto=format&fit=crop");
+  background-size: cover;
+  background-position: center 62%;
+  filter: saturate(1.05) contrast(1.02);
+}
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(12, 38, 45, 0.85) 0%, rgba(12, 38, 45, 0.35) 30%, rgba(12, 38, 45, 0.55) 70%, rgba(12, 38, 45, 0.95) 100%),
+    linear-gradient(90deg, rgba(12, 38, 45, 0.75) 0%, rgba(12, 38, 45, 0.15) 55%, rgba(12, 38, 45, 0.1) 100%);
+}
+
+.hero-top {
+  position: absolute;
+  top: 32px;
+  left: 0; right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 var(--gutter);
+  max-width: var(--maxw);
+  margin: 0 auto;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: rgba(246, 240, 224, 0.7);
+  z-index: 2;
+}
+.hero-top > div { display: flex; align-items: center; gap: 10px; }
+.hero-top .dot { width: 5px; height: 5px; background: var(--coral); border-radius: 50%; display: inline-block; }
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--gutter) 110px;
+  width: 100%;
+}
+
+.hero-eyebrow {
+  font-family: var(--script);
+  font-size: 30px;
+  color: var(--butter);
+  margin-bottom: 20px;
+  display: inline-block;
+  transform: rotate(-2deg);
+  opacity: 0;
+  animation: fadeUp 0.9s 0.2s ease forwards;
+}
+.hero h1 {
+  font-size: clamp(62px, 13vw, 220px);
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  font-weight: 400;
+  max-width: 11ch;
+  color: var(--cream);
+  opacity: 0;
+  animation: fadeUp 1s 0.4s ease forwards;
+  font-variation-settings: "SOFT" 50, "opsz" 144;
+}
+.hero h1 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--butter);
+  font-variation-settings: "SOFT" 100, "opsz" 144;
+}
+.hero-sub {
+  margin-top: 34px;
+  max-width: 480px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgba(246, 240, 224, 0.82);
+  opacity: 0;
+  animation: fadeUp 0.9s 0.7s ease forwards;
+}
+.hero-ctas {
+  margin-top: 38px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.9s ease forwards;
+}
+
+.hero-meta {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 110px;
+  z-index: 2;
+  text-align: right;
+  border-right: 1.5px solid rgba(246, 240, 224, 0.25);
+  padding-right: 24px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(246, 240, 224, 0.75);
+  line-height: 1.9;
+  opacity: 0;
+  animation: fadeUp 0.9s 1.1s ease forwards;
+}
+.hero-meta strong { display: block; font-family: var(--display); font-style: italic; font-weight: 500; font-size: 36px; letter-spacing: -0.01em; color: var(--cream); text-transform: none; margin-top: 6px; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================================ MARQUEE ================================ */
+.marquee {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 22px 0;
+  overflow: hidden;
+  border-top: 1px solid var(--teal-deep);
+  border-bottom: 1px solid var(--teal-deep);
+}
+.marquee-track {
+  display: flex;
+  gap: 60px;
+  white-space: nowrap;
+  animation: scroll 42s linear infinite;
+  width: max-content;
+}
+.marquee-track span {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 28px;
+  letter-spacing: 0.01em;
+  display: inline-flex;
+  align-items: center;
+  gap: 60px;
+}
+.marquee-track span::after {
+  content: "✦";
+  color: var(--coral);
+  font-style: normal;
+  font-size: 18px;
+}
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ================================ SECTION BASE ================================ */
+section {
+  padding: clamp(80px, 10vw, 140px) 0;
+}
+.container {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 70px;
+  flex-wrap: wrap;
+}
+.section-head h2 {
+  font-size: clamp(48px, 7vw, 108px);
+  line-height: 0.9;
+  max-width: 14ch;
+  font-weight: 400;
+}
+.section-head h2 em { font-style: italic; font-weight: 300; color: var(--coral); font-variation-settings: "SOFT" 100, "opsz" 144; }
+.section-head p {
+  max-width: 340px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ================================ INTRO / USUALS ================================ */
+.usuals { background: var(--cream); }
+
+.usuals-head {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+  margin-bottom: 90px;
+  align-items: end;
+}
+.usuals-head .script { font-size: 34px; color: var(--coral); display: block; transform: rotate(-3deg); margin-bottom: 10px; }
+.usuals-head h2 {
+  font-size: clamp(56px, 9vw, 148px);
+  line-height: 0.86;
+  letter-spacing: -0.03em;
+}
+.usuals-head h2 em { font-style: italic; font-weight: 300; color: var(--teal); font-variation-settings: "SOFT" 100, "opsz" 144; }
+.usuals-head .copy p {
+  font-size: 17px;
+  color: var(--ink-soft);
+  line-height: 1.65;
+  max-width: 44ch;
+  margin-bottom: 20px;
+}
+.usuals-head .copy p:last-child { color: var(--muted); font-size: 15px; }
+
+.usuals-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 24px;
+}
+.dish {
+  position: relative;
+  background: var(--cream-soft);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s ease;
+}
+.dish:hover { transform: translateY(-4px); }
+.dish-img {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  background: var(--teal-ink);
+}
+.dish-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s cubic-bezier(.2,.8,.2,1);
+}
+.dish:hover .dish-img img { transform: scale(1.06); }
+.dish-award {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  border: 1.5px solid var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dish-award .star { color: var(--coral); font-size: 9px; }
+.dish-body {
+  padding: 28px 28px 30px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 22px;
+}
+.dish-body h3 {
+  font-size: 30px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  font-variation-settings: "SOFT" 80, "opsz" 144;
+}
+.dish-body p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.dish-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 6px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+.dish-meta .price { color: var(--coral); font-family: var(--display); font-style: italic; font-size: 22px; font-weight: 500; letter-spacing: 0; text-transform: none; }
+
+/* First dish is larger */
+.dish.feature {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+}
+.dish.feature .dish-img { aspect-ratio: 4/5; }
+.dish.feature .dish-body { padding: 36px 36px 40px; }
+.dish.feature .dish-body h3 { font-size: 54px; max-width: 10ch; }
+.dish.feature .dish-body p { font-size: 15px; max-width: 42ch; }
+
+/* ================================ SPECIALS BOARD ================================ */
+.specials {
+  background: var(--teal-deep);
+  color: var(--cream);
+  padding: 90px 0;
+  position: relative;
+  overflow: hidden;
+}
+.specials::before, .specials::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border: 2px dashed rgba(246, 240, 224, 0.1);
+  border-radius: 50%;
+}
+.specials::before { top: -60px; left: -60px; }
+.specials::after { bottom: -60px; right: -60px; }
+.specials-inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.specials .script {
+  font-size: 36px;
+  color: var(--butter);
+  display: inline-block;
+  transform: rotate(-2deg);
+  margin-bottom: 18px;
+}
+.specials h2 {
+  font-size: clamp(46px, 6.5vw, 88px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  margin-bottom: 22px;
+  color: var(--cream);
+}
+.specials h2 em { font-style: italic; font-weight: 300; color: var(--coral); }
+.specials p {
+  max-width: 50ch;
+  color: rgba(246, 240, 224, 0.82);
+  font-size: 17px;
+  line-height: 1.65;
+  margin-bottom: 34px;
+}
+.specials-list {
+  background: var(--cream);
+  color: var(--ink);
+  padding: 40px 44px;
+  border: 1px solid var(--butter);
+  box-shadow: 14px 14px 0 var(--coral);
+  transform: rotate(-1deg);
+}
+.specials-list .board-title {
+  font-family: var(--script);
+  color: var(--coral);
+  font-size: 42px;
+  line-height: 1;
+  margin-bottom: 8px;
+  display: block;
+}
+.specials-list .board-sub {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 28px;
+}
+.specials-list ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.specials-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.1;
+  color: var(--ink-soft);
+}
+.specials-list li .dots {
+  flex-grow: 1;
+  border-bottom: 2px dotted var(--muted);
+  margin-bottom: 6px;
+}
+.specials-list li .p {
+  font-family: var(--display);
+  font-style: normal;
+  font-weight: 500;
+  color: var(--coral);
+  font-size: 20px;
+}
+.specials-list .note {
+  font-family: var(--script);
+  color: var(--teal);
+  font-size: 22px;
+  margin-top: 24px;
+  display: block;
+  transform: rotate(-1deg);
+}
+
+/* ================================ ORIGIN STORY ================================ */
+.origin { background: var(--cream); padding-top: 0; }
+.origin-inner {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 80px;
+  align-items: center;
+}
+.origin-img {
+  position: relative;
+}
+.origin-img img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  filter: sepia(0.15) contrast(1.02);
+}
+.origin-img .stamp {
+  position: absolute;
+  bottom: -36px;
+  right: -36px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: var(--coral);
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.1;
+  transform: rotate(-8deg);
+  border: 2px solid var(--cream);
+  box-shadow: 0 0 0 2px var(--coral);
+  padding: 18px;
+}
+.origin-img .stamp strong {
+  font-family: var(--display);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 38px;
+  display: block;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 6px 0;
+}
+.origin-img .stamp small {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-family: var(--body);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.origin-body .eyebrow { margin-bottom: 26px; }
+.origin-body h2 {
+  font-size: clamp(44px, 6vw, 84px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+  max-width: 14ch;
+}
+.origin-body h2 em { font-style: italic; font-weight: 300; color: var(--coral); }
+.origin-body p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin-bottom: 18px;
+  max-width: 54ch;
+}
+.origin-body .quote {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 26px;
+  line-height: 1.3;
+  color: var(--teal);
+  margin: 40px 0;
+  padding: 24px 0 24px 28px;
+  border-left: 3px solid var(--coral);
+  max-width: 40ch;
+  font-variation-settings: "SOFT" 100;
+}
+.origin-body .quote cite {
+  display: block;
+  font-style: normal;
+  font-family: var(--body);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  font-weight: 600;
+  margin-top: 14px;
+}
+
+/* ================================ FOOD TRUCK ================================ */
+.truck {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 0;
+  overflow: hidden;
+}
+.truck-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 640px;
+}
+.truck-img {
+  background-image: url("https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=1400&q=80&auto=format&fit=crop");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.truck-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(20, 19, 17, 0.15) 0%, rgba(232, 90, 60, 0.3) 100%);
+}
+.truck-tag {
+  position: absolute;
+  top: 36px;
+  left: 36px;
+  z-index: 2;
+  font-family: var(--script);
+  color: var(--butter);
+  font-size: 34px;
+  transform: rotate(-3deg);
+}
+.truck-body {
+  padding: clamp(60px, 8vw, 110px) clamp(40px, 6vw, 90px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.truck-body .eyebrow { color: var(--butter); margin-bottom: 22px; }
+.truck-body h2 {
+  font-size: clamp(52px, 7vw, 108px);
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  margin-bottom: 26px;
+  color: var(--cream);
+}
+.truck-body h2 em { font-style: italic; font-weight: 300; color: var(--coral); }
+.truck-body p {
+  font-size: 17px;
+  line-height: 1.65;
+  color: rgba(246, 240, 224, 0.78);
+  max-width: 50ch;
+  margin-bottom: 28px;
+}
+.truck-menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 34px;
+  margin: 34px 0;
+  padding: 28px 0;
+  border-top: 1px solid rgba(246, 240, 224, 0.15);
+  border-bottom: 1px solid rgba(246, 240, 224, 0.15);
+}
+.truck-menu div {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.truck-menu div::before {
+  content: "✦";
+  color: var(--coral);
+  font-style: normal;
+  font-size: 12px;
+}
+.truck-cta {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.truck-cta .phone {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--butter);
+}
+.truck-cta .phone small { display: block; font-family: var(--body); font-style: normal; font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(246, 240, 224, 0.5); font-weight: 600; margin-bottom: 4px; }
+
+/* ================================ VISIT ================================ */
+.visit { background: var(--cream); }
+.visit-head { text-align: center; margin-bottom: 70px; }
+.visit-head .eyebrow { justify-content: center; margin-bottom: 22px; }
+.visit-head h2 {
+  font-size: clamp(56px, 8vw, 120px);
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  font-weight: 400;
+}
+.visit-head h2 em { font-style: italic; font-weight: 300; color: var(--coral); }
+.visit-head p { color: var(--muted); margin-top: 18px; font-size: 16px; }
+
+.visit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.visit-card {
+  background: var(--cream-soft);
+  padding: 50px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.visit-card .icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--coral);
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin-bottom: 14px;
+}
+.visit-card h3 {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 32px;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  color: var(--ink);
+}
+.visit-card .content { font-size: 15px; color: var(--ink-soft); line-height: 1.75; }
+.visit-card .content strong { font-weight: 600; color: var(--ink); }
+.visit-card .content .row { display: flex; justify-content: space-between; padding: 4px 0; }
+.visit-card .content .row span:first-child { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; }
+.visit-card a { color: var(--teal); border-bottom: 1px solid var(--teal); font-weight: 500; display: inline-block; margin-top: 6px; }
+.visit-card a:hover { color: var(--coral); border-color: var(--coral); }
+
+/* ================================ PRESS ================================ */
+.press {
+  padding: 60px 0;
+  background: var(--cream-warm);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.press-track {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+.press-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+  font-weight: 600;
+}
+.press-logos {
+  display: flex;
+  gap: 54px;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  justify-content: space-around;
+}
+.press-logos span {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  letter-spacing: -0.01em;
+  opacity: 0.75;
+  transition: all 0.3s;
+}
+.press-logos span:hover { opacity: 1; color: var(--coral); }
+
+/* ================================ FOOTER ================================ */
+footer {
+  background: var(--teal-ink);
+  color: rgba(246, 240, 224, 0.75);
+  padding: 100px 0 40px;
+  position: relative;
+  overflow: hidden;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 80px;
+}
+.footer-brand {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 48px;
+  color: var(--cream);
+  line-height: 0.9;
+  margin-bottom: 18px;
+  letter-spacing: -0.02em;
+}
+.footer-brand .brand-star {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: var(--coral);
+  transform: rotate(45deg);
+  margin-right: 6px;
+}
+.footer-grid p { font-size: 15px; line-height: 1.65; max-width: 34ch; margin-bottom: 22px; }
+.footer-grid h4 {
+  font-family: var(--body);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--butter);
+  font-weight: 600;
+  margin-bottom: 22px;
+  font-style: normal;
+}
+.footer-grid ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+.footer-grid ul a {
+  font-size: 15px;
+  color: rgba(246, 240, 224, 0.75);
+  transition: color 0.2s;
+}
+.footer-grid ul a:hover { color: var(--coral); }
+.footer-socials {
+  display: flex;
+  gap: 14px;
+  margin-top: 10px;
+}
+.footer-socials a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(246, 240, 224, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all 0.25s;
+}
+.footer-socials a:hover { background: var(--coral); border-color: var(--coral); color: var(--cream); }
+
+.footer-bottom {
+  padding-top: 30px;
+  border-top: 1px solid rgba(246, 240, 224, 0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(246, 240, 224, 0.5);
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.footer-bottom .legal { display: flex; gap: 26px; }
+.footer-bottom .legal a:hover { color: var(--coral); }
+
+/* ============== RESPONSIVE ============== */
+@media (max-width: 1024px) {
+  .usuals-head, .origin-inner, .truck-inner, .specials-inner { grid-template-columns: 1fr; gap: 60px; }
+  .usuals-grid { grid-template-columns: 1fr 1fr; }
+  .dish.feature { grid-column: 1 / 3; grid-row: auto; }
+  .dish.feature .dish-img { aspect-ratio: 16/9; }
+  .visit-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 50px; }
+  .truck-img { min-height: 420px; }
+}
+@media (max-width: 768px) {
+  .nav { grid-template-columns: auto auto; }
+  .nav-links { display: none; }
+  .nav-phone { display: none; }
+  .menu-toggle { display: inline-flex; font-size: 22px; color: var(--ink); padding: 8px; }
+  .hero { min-height: auto; padding-top: 80px; }
+  .hero-inner { padding-bottom: 70px; }
+  .hero h1 { font-size: clamp(56px, 16vw, 92px); }
+  .hero-meta { position: static; text-align: left; border-right: none; border-left: 1.5px solid rgba(246, 240, 224, 0.25); padding-right: 0; padding-left: 20px; margin-top: 50px; }
+  .hero-top { font-size: 10px; top: 20px; }
+  .hero-top > div:nth-child(2) { display: none; }
+
+  .marquee-track span { font-size: 22px; gap: 40px; }
+
+  section { padding: 70px 0; }
+  .section-head { flex-direction: column; align-items: flex-start; gap: 24px; margin-bottom: 50px; }
+
+  .usuals-grid { grid-template-columns: 1fr; }
+  .dish.feature { grid-column: auto; }
+
+  .specials-list { padding: 30px 28px; }
+  .specials-list .board-title { font-size: 34px; }
+  .specials-list li { font-size: 18px; }
+
+  .origin-img .stamp { width: 120px; height: 120px; bottom: -20px; right: -10px; font-size: 11px; }
+  .origin-img .stamp strong { font-size: 28px; }
+
+  .truck-body { padding: 60px 30px; }
+  .truck-menu { grid-template-columns: 1fr; gap: 12px; }
+
+  .visit-card { padding: 40px 32px; }
+
+  .press-track { justify-content: center; text-align: center; }
+  .press-logos { gap: 32px; justify-content: center; }
+  .press-logos span { font-size: 19px; }
+
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; margin-bottom: 50px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ================================ NAV ================================ -->
+<div class="nav-wrap">
+  <nav class="nav">
+    <a href="#" class="brand"><span class="brand-star"></span>Steuben's</a>
+    <ul class="nav-links">
+      <li><a href="#usuals">Menu</a></li>
+      <li><a href="#story">About</a></li>
+      <li><a href="#truck">Food Truck</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <div class="nav-actions">
+      <span class="nav-phone"><i class="fa-solid fa-phone"></i>303.830.1001</span>
+      <a href="#reserve" class="btn btn-primary">Reserve <i class="fa-solid fa-arrow-right"></i></a>
+      <button class="menu-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </nav>
+</div>
+
+<!-- ================================ HERO ================================ -->
+<header class="hero">
+  <div class="hero-bg"></div>
+
+  <div class="hero-top">
+    <div><span class="dot"></span>Uptown Denver · 523 East 17th Ave</div>
+    <div>Open 7 days · Brunch, Lunch, Dinner & Late Night</div>
+    <div>Est. 2006</div>
+  </div>
+
+  <div class="hero-inner">
+    <span class="hero-eyebrow">A Denver neighborhood classic —</span>
+    <h1>This is<br>a <em>diner</em>.</h1>
+    <p class="hero-sub">
+      Regional American comfort food in Uptown Denver since 2006. Named after the 1945 Boston supper club where the Rat Pack used to eat. Home of the best green chile cheeseburger, fried chicken, and Monte Cristo in town.
+    </p>
+    <div class="hero-ctas">
+      <a href="#reserve" class="btn btn-primary">Reserve a Table <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="#order" class="btn btn-outline">Order Online</a>
+    </div>
+  </div>
+
+  <div class="hero-meta">
+    Since<strong>2006</strong>Denver, CO
+  </div>
+</header>
+
+<!-- ================================ MARQUEE ================================ -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Best Burger in Denver</span><span>Best Fried Chicken</span><span>Best Mac & Cheese</span><span>Best Lobster Roll</span><span>Best Cocktail Bar</span><span>A Denver Original Since 2006</span>
+    <span>Best Burger in Denver</span><span>Best Fried Chicken</span><span>Best Mac & Cheese</span><span>Best Lobster Roll</span><span>Best Cocktail Bar</span><span>A Denver Original Since 2006</span>
+  </div>
+</div>
+
+<!-- ================================ THE USUALS ================================ -->
+<section class="usuals" id="usuals">
+  <div class="container">
+    <div class="usuals-head">
+      <div>
+        <span class="script">— On the menu —</span>
+        <h2>The <em>Usuals.</em></h2>
+      </div>
+      <div class="copy">
+        <p>What our regulars order without opening the menu. Cooked from scratch, same recipes since 2006, served on heavy cream plates that have held a million brunches.</p>
+        <p>Every award Denver could give a diner — they gave us. We just kept cooking.</p>
+      </div>
+    </div>
+
+    <div class="usuals-grid">
+      <!-- FEATURE -->
+      <article class="dish feature">
+        <div class="dish-img">
+          <div class="dish-award"><span class="star">★</span> Best Burger in Denver</div>
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1200&q=80&auto=format&fit=crop" alt="Green Chile Cheeseburger" />
+        </div>
+        <div class="dish-body">
+          <div>
+            <h3>The Green Chile<br>Cheeseburger</h3>
+            <p style="margin-top:16px;">On the menu since day one in 2006. Two beef patties, chopped Hatch green chiles, American cheese, lettuce, tomato, pickles, on a house-griddled bun. The reason most people walk through the door.</p>
+          </div>
+          <div class="dish-meta">
+            <span>House Signature · Since '06</span>
+            <span class="price">$16</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="dish">
+        <div class="dish-img">
+          <div class="dish-award"><span class="star">★</span> Best Fried Chicken</div>
+          <img src="https://images.unsplash.com/photo-1562967914-608f82629710?w=900&q=80&auto=format&fit=crop" alt="Nashville Hot Fried Chicken" />
+        </div>
+        <div class="dish-body">
+          <div>
+            <h3>Nashville Hot Chicken</h3>
+            <p>Buttermilk brined, cayenne-cloaked, served with pickles and a Parker House roll that came out of the oven an hour ago.</p>
+          </div>
+          <div class="dish-meta">
+            <span>White or Dark</span>
+            <span class="price">$19</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="dish">
+        <div class="dish-img">
+          <div class="dish-award"><span class="star">★</span> Best Lobster Roll</div>
+          <img src="https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?w=900&q=80&auto=format&fit=crop" alt="Maine Lobster Roll" />
+        </div>
+        <div class="dish-body">
+          <div>
+            <h3>Maine Lobster Roll</h3>
+            <p>Cold Maine lobster, lemon mayo, a squeeze of chive on a buttered & griddled New England split-top. That's it. That's the whole thing.</p>
+          </div>
+          <div class="dish-meta">
+            <span>New England Style</span>
+            <span class="price">$28</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="dish">
+        <div class="dish-img">
+          <div class="dish-award"><span class="star">★</span> Diner Legend</div>
+          <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=900&q=80&auto=format&fit=crop" alt="Monte Cristo" />
+        </div>
+        <div class="dish-body">
+          <div>
+            <h3>The Monte Cristo</h3>
+            <p>Battered sourdough, deep fried, ham, house-smoked turkey, Swiss, American, powdered sugar, raspberry preserves. Absolute chaos, on purpose.</p>
+          </div>
+          <div class="dish-meta">
+            <span>Brunch Only</span>
+            <span class="price">$17</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="dish">
+        <div class="dish-img">
+          <div class="dish-award"><span class="star">★</span> Best Mac & Cheese</div>
+          <img src="https://images.unsplash.com/photo-1543339308-43e59d6b73a6?w=900&q=80&auto=format&fit=crop" alt="House Mac and Cheese" />
+        </div>
+        <div class="dish-body">
+          <div>
+            <h3>House Mac &amp; Cheese</h3>
+            <p>Four-cheese béchamel, elbow pasta, toasted panko, a whisper of nutmeg. Add lobster, bacon, or hatch chiles. Or all three.</p>
+          </div>
+          <div class="dish-meta">
+            <span>Side or Entrée</span>
+            <span class="price">$12</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================================ SPECIALS BAND ================================ -->
+<section class="specials">
+  <div class="container specials-inner">
+    <div>
+      <span class="script">Daily from the kitchen —</span>
+      <h2>Not on the menu, <em>on purpose.</em></h2>
+      <p>Every day at 11am the chalkboard changes. Whatever came in fresh, whatever we feel like cooking, whatever's in season. Stop in — ask what's good. The answer is always "yes."</p>
+      <a href="#visit" class="btn btn-primary">Visit the Diner <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <aside class="specials-list" aria-label="Example specials board">
+      <span class="board-title">Today's Specials</span>
+      <span class="board-sub">Served 'til We Run Out</span>
+      <ul>
+        <li>Short Rib Hash <span class="dots"></span> <span class="p">18</span></li>
+        <li>Elk Meatloaf <span class="dots"></span> <span class="p">24</span></li>
+        <li>Lobster Bisque <span class="dots"></span> <span class="p">14</span></li>
+        <li>Peach Cobbler <span class="dots"></span> <span class="p">9</span></li>
+      </ul>
+      <span class="note">ask yr server — xo</span>
+    </aside>
+  </div>
+</section>
+
+<!-- ================================ ORIGIN STORY ================================ -->
+<section class="origin" id="story">
+  <div class="container origin-inner">
+    <div class="origin-img">
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80&auto=format&fit=crop" alt="Vintage diner interior" />
+      <div class="stamp">
+        From <strong>1945</strong> Boston · Denver
+      </div>
+    </div>
+    <div class="origin-body">
+      <span class="eyebrow">The Backstory</span>
+      <h2>Boston, 1945. <em>Denver, 2006.</em></h2>
+      <p>The original Steuben's was a supper club on Boylston Street in Boston, opened by Josh Wolkon's great-uncles in 1945. The Vienna Room. The Cave. The Blue Room. Big Band, jazz, swing. The Rat Pack ate there. Proms happened there. Sinatra happened there.</p>
+      <p>Six decades later, Josh took that name, that feeling, and dropped it into an old garage on East 17th Avenue in Uptown Denver. Regional American comfort food. A lobster roll from New England. A green chile cheeseburger from Albuquerque. Fried chicken from the South. The same everyday-diner feeling his great-uncles built seventy years ago.</p>
+      <blockquote class="quote">
+        "We just wanted an everyday neighborhood diner, serving all the things you actually crave. That's it. That's the whole concept."
+        <cite>— Josh Wolkon, Owner</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ================================ FOOD TRUCK ================================ -->
+<section class="truck" id="truck">
+  <div class="truck-inner">
+    <div class="truck-img">
+      <span class="truck-tag">— rolling since 2011 —</span>
+    </div>
+    <div class="truck-body">
+      <span class="eyebrow single">The Steuben's Truck</span>
+      <h2>Book <em>the Truck.</em></h2>
+      <p>The diner, on wheels. Weddings, birthdays, company events, graduations, random Tuesdays that need to feel like a party. We roll up, we feed a crowd, everyone remembers.</p>
+
+      <div class="truck-menu">
+        <div>Hot Chicken Sliders</div>
+        <div>Green Chile Cheese Fries</div>
+        <div>The Monte Cristo</div>
+        <div>Pulled Pork Sandwiches</div>
+        <div>Beer-Battered Cod</div>
+        <div>Chopped Ribeye Melts</div>
+      </div>
+
+      <div class="truck-cta">
+        <a href="#book" class="btn btn-primary">Book the Truck <i class="fa-solid fa-arrow-right"></i></a>
+        <div class="phone"><small>Food truck line</small>303.242.8520</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================ VISIT ================================ -->
+<section class="visit" id="visit">
+  <div class="container">
+    <div class="visit-head">
+      <span class="eyebrow">Come See Us</span>
+      <h2>Uptown, <em>at the corner.</em></h2>
+      <p>523 East 17th Avenue · Denver, Colorado 80203</p>
+    </div>
+
+    <div class="visit-grid">
+      <div class="visit-card">
+        <div class="icon"><i class="fa-regular fa-clock"></i></div>
+        <h3>Kitchen Hours</h3>
+        <div class="content">
+          <div class="row"><span>Mon – Thu</span><strong>11a – 10p</strong></div>
+          <div class="row"><span>Friday</span><strong>11a – 11p</strong></div>
+          <div class="row"><span>Saturday</span><strong>9a – 11p</strong></div>
+          <div class="row"><span>Sunday</span><strong>9a – 10p</strong></div>
+          <p style="margin-top:14px; font-size:13px; color:var(--muted);">Brunch served Saturday & Sunday from 9am.</p>
+        </div>
+      </div>
+
+      <div class="visit-card">
+        <div class="icon"><i class="fa-solid fa-location-dot"></i></div>
+        <h3>Find the Diner</h3>
+        <div class="content">
+          <strong>523 East 17th Avenue</strong><br>
+          Denver, Colorado 80203<br>
+          <span style="color:var(--muted); font-size:13px;">Uptown · Between Pearl &amp; Washington</span>
+          <a href="https://maps.google.com/?q=523+East+17th+Avenue+Denver+CO" target="_blank" rel="noopener">Get directions <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px;"></i></a>
+        </div>
+      </div>
+
+      <div class="visit-card">
+        <div class="icon"><i class="fa-solid fa-phone"></i></div>
+        <h3>Get in Touch</h3>
+        <div class="content">
+          <div class="row"><span>Diner</span><strong>303.830.1001</strong></div>
+          <div class="row"><span>Food Truck</span><strong>303.242.8520</strong></div>
+          <div class="row"><span>Catering</span><strong>303.830.1001</strong></div>
+          <a href="mailto:hello@steubens.com">hello@steubens.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================ PRESS ================================ -->
+<section class="press">
+  <div class="container press-track">
+    <span class="press-label">As seen in</span>
+    <div class="press-logos">
+      <span>Westword</span>
+      <span>5280 Magazine</span>
+      <span>Eater Denver</span>
+      <span>Food Network</span>
+      <span>Thrillist</span>
+      <span>The Denver Post</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================================ FOOTER ================================ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><span class="brand-star"></span>Steuben's</div>
+        <p>A real diner in Uptown Denver. Regional American comfort food, honest prices, and a room that's felt the same since 2006. Named after a Boston supper club that opened in 1945.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="Tiktok"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="#">Food</a></li>
+          <li><a href="#">Drinks</a></li>
+          <li><a href="#">Happy Hour</a></li>
+          <li><a href="#">Brunch</a></li>
+          <li><a href="#">Cakes &amp; Cookies</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <ul>
+          <li><a href="#visit">Hours</a></li>
+          <li><a href="#visit">Location</a></li>
+          <li><a href="#">Reservations</a></li>
+          <li><a href="#">Private Events</a></li>
+          <li><a href="#">Gift Cards</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>The House</h4>
+        <ul>
+          <li><a href="#story">About</a></li>
+          <li><a href="#truck">Food Truck</a></li>
+          <li><a href="#">Catering</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Steuben's · Secret Sauce F&amp;B · Denver, CO</div>
+      <div class="legal">
+        <a href="#">Privacy</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Intersection-observer scroll reveal
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = "1";
+      e.target.style.transform = "translateY(0)";
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.dish, .visit-card, .origin-body, .origin-img, .specials-list, .truck-body, .section-head, .usuals-head > div').forEach(el => {
+  el.style.opacity = "0";
+  el.style.transform = "translateY(28px)";
+  el.style.transition = "opacity 0.9s ease, transform 0.9s cubic-bezier(.2,.8,.2,1)";
+  io.observe(el);
+});
+
+// Image fallback — swap to a teal background card if image fails
+document.querySelectorAll('.dish-img img, .origin-img img').forEach(img => {
+  img.addEventListener('error', () => {
+    img.style.display = 'none';
+    img.parentElement.style.background = 'linear-gradient(135deg, #1F5968, #143A44)';
+  });
+});
+</script>
+
+</body>
+</html>
